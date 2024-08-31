@@ -14,6 +14,26 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": []
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "e36d33d2-da71-4c28-a509-1fb8ca0e1268",
+        "Display": 0,
+        "X": 64,
+        "Y": 41,
+        "Width": 497,
+        "Height": 505,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
           "SelectedChildIndex": 0,
           "Children": [
             {
