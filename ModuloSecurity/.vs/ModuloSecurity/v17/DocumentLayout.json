@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7F11F649-1A69-4CC0-80D6-1C46A2A8B60A}|Entity\\Entity.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\entity\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F11F649-1A69-4CC0-80D6-1C46A2A8B60A}|Entity\\Entity.csproj|solutionrelative:entity\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
       "RelativeMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|solutionrelative:diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     }
@@ -23,26 +19,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ApplicationDBContext.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Entity\\Context\\ApplicationDBContext.cs",
-              "RelativeDocumentMoniker": "Entity\\Context\\ApplicationDBContext.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Entity\\Context\\ApplicationDBContext.cs",
-              "RelativeToolTip": "Entity\\Context\\ApplicationDBContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T03:41:36.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "DBModel.edmx [Diagram1]",
               "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Diagram\\DBModel.edmx",
               "RelativeDocumentMoniker": "Diagram\\DBModel.edmx",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Diagram\\DBModel.edmx [Diagram1]",
               "RelativeToolTip": "Diagram\\DBModel.edmx [Diagram1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-08-31T03:06:44.794Z",
+              "WhenOpened": "2024-08-31T05:10:21.144Z",
               "EditorCaption": " [Diagram1]"
             }
           ]

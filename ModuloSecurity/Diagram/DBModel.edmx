@@ -61,6 +61,7 @@
           <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
           <Property Name="Phone" Type="Int16" Nullable="false" />
           <Property Name="State" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
