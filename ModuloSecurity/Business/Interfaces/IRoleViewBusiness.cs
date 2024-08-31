@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entity.DTO;
+using Entity.Model.Security;
 
 namespace Business.Interfaces
 {
     public interface IRoleViewBusiness
     {
+
+        Task Delete(int id);
+
+        Task<IEnumerable<RoleViewDto>> GetAll();
+
+        Task<RoleViewDto> GetById(int id);
+
+
+        Task<IEnumerable<DataSelectDto>> GetAllSelect();
+
+
+        Task<RoleView> Save(RoleViewDto entity);
+
+        Task Update(RoleViewDto entity);
+
     }
 }

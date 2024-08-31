@@ -14,7 +14,6 @@ namespace Entity.DTO
 
         public string Password { get; set; }
 
-
         public bool State { get; set; }
     }
 }

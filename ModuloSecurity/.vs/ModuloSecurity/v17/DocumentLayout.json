@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|solutionrelative:diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -16,39 +11,6 @@
           "DockedWidth": 200,
           "SelectedChildIndex": -1,
           "Children": []
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "e36d33d2-da71-4c28-a509-1fb8ca0e1268",
-        "Display": 0,
-        "X": 64,
-        "Y": 41,
-        "Width": 497,
-        "Height": 505,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DBModel.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Diagram\\DBModel.edmx",
-              "RelativeDocumentMoniker": "Diagram\\DBModel.edmx",
-              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Diagram\\DBModel.edmx [Diagram1]",
-              "RelativeToolTip": "Diagram\\DBModel.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-08-31T05:10:21.144Z",
-              "EditorCaption": " [Diagram1]"
-            }
-          ]
         }
       ]
     }

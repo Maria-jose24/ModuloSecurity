@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Implements
 {
-    public class ModuloData
+    public class ModuloData 
     {
     }
 }

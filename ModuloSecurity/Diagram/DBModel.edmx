@@ -53,7 +53,7 @@
           <Property Name="First_name" Type="String" Nullable="false" />
           <Property Name="Last_name" Type="String" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" />
-          <Property Name="Addres" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
           <Property Name="Type_document" Type="String" Nullable="false" />
           <Property Name="Document" Type="Int16" Nullable="false" />
           <Property Name="Birth_of_date" Type="DateTime" Nullable="false" />
