@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\ViewController.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\ViewController.cs",
               "RelativeToolTip": "Web\\Controllers\\Implements\\ViewController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAJAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAADwvxMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-01T15:49:48.382Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "Web\\Controllers\\Implements\\UserRoleController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:49:32.1Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-01T15:49:32.1Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "Web\\Controllers\\Implements\\UserController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:49:20.503Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-01T15:49:20.503Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "Web\\Controllers\\Implements\\RoleViewController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:49:09.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-01T15:49:09.699Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "Web\\Controllers\\Implements\\RoleController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T15:48:58.031Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-01T15:48:58.031Z"
             }
           ]
         }
