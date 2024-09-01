@@ -1,0 +1,6 @@
+C:\Users\Usuario\Downloads\ModuloSecurity\ModuloSecurity\Business\obj\Debug\net8.0\Business.csproj.AssemblyReference.cache
+C:\Users\Usuario\Downloads\ModuloSecurity\ModuloSecurity\Business\obj\Debug\net8.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Downloads\ModuloSecurity\ModuloSecurity\Business\obj\Debug\net8.0\Business.AssemblyInfoInputs.cache
+C:\Users\Usuario\Downloads\ModuloSecurity\ModuloSecurity\Business\obj\Debug\net8.0\Business.AssemblyInfo.cs
+C:\Users\Usuario\Downloads\ModuloSecurity\ModuloSecurity\Business\obj\Debug\net8.0\Business.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Downloads\ModuloSecurity\ModuloSecurity\Business\obj\Debug\net8.0\Business.sourcelink.json

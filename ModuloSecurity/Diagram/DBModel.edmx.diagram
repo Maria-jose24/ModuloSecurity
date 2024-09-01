@@ -14,10 +14,10 @@
         <EntityTypeShape EntityType="DBModel.Modulo" Width="1.5" PointX="12.875" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="DBModel.PersonUser" />
         <AssociationConnector Association="DBModel.UserUserRole" />
-        <AssociationConnector Association="DBModel.UserRoleRole" />
         <AssociationConnector Association="DBModel.RoleRoleView" />
         <AssociationConnector Association="DBModel.RoleViewView" />
         <AssociationConnector Association="DBModel.ViewModulo" />
+        <AssociationConnector Association="DBModel.UserRoleRole" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

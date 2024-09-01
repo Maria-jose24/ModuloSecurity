@@ -28,10 +28,6 @@
             <End Role="User" EntitySet="UserSet" />
             <End Role="UserRole" EntitySet="UserRoleSet" />
           </AssociationSet>
-          <AssociationSet Name="UserRoleRole" Association="DBModel.UserRoleRole">
-            <End Role="UserRole" EntitySet="UserRoleSet" />
-            <End Role="Role" EntitySet="RoleSet" />
-          </AssociationSet>
           <AssociationSet Name="RoleRoleView" Association="DBModel.RoleRoleView">
             <End Role="Role" EntitySet="RoleSet" />
             <End Role="RoleView" EntitySet="RoleViewSet" />
@@ -43,6 +39,10 @@
           <AssociationSet Name="ViewModulo" Association="DBModel.ViewModulo">
             <End Role="View" EntitySet="ViewSet" />
             <End Role="Modulo" EntitySet="ModuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserRoleRole" Association="DBModel.UserRoleRole">
+            <End Role="UserRole" EntitySet="UserRoleSet" />
+            <End Role="Role" EntitySet="RoleSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Person">
@@ -110,7 +110,6 @@
           <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
           <Property Name="State" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="IdRole" Relationship="DBModel.RoleRoleView" FromRole="RoleView" ToRole="Role" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="IdView" Relationship="DBModel.RoleViewView" FromRole="RoleView" ToRole="View" />
         </EntityType>
         <EntityType Name="View">
@@ -145,10 +144,6 @@
           <End Type="DBModel.User" Role="User" Multiplicity="1" />
           <End Type="DBModel.UserRole" Role="UserRole" Multiplicity="*" />
         </Association>
-        <Association Name="UserRoleRole">
-          <End Type="DBModel.UserRole" Role="UserRole" Multiplicity="*" />
-          <End Type="DBModel.Role" Role="Role" Multiplicity="1" />
-        </Association>
         <Association Name="RoleRoleView">
           <End Type="DBModel.Role" Role="Role" Multiplicity="1" />
           <End Type="DBModel.RoleView" Role="RoleView" Multiplicity="*" />
@@ -168,6 +163,10 @@
         <Association Name="ViewModulo">
           <End Type="DBModel.View" Role="View" Multiplicity="*" />
           <End Type="DBModel.Modulo" Role="Modulo" Multiplicity="1" />
+        </Association>
+        <Association Name="UserRoleRole">
+          <End Type="DBModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <End Type="DBModel.Role" Role="Role" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
