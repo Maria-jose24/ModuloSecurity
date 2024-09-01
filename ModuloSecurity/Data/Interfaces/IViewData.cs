@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Interfaces
 {
-    public class IViewData
+    public interface IViewData
     {
         public Task Delete(int id);
 
@@ -20,11 +20,8 @@ namespace Data.Interfaces
 
         public Task<IEnumerable<View>> GetAll();
 
-        Task<UserRole>Save(UserRole userRole);
+        public Task<View>GetByName(string name);
 
-        public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
-        {
-            throw new NotImplementedException();
-        }
+        Task<UserRole> Save(UserRole userRole);
     }
 }

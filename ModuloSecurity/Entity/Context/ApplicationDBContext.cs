@@ -60,6 +60,14 @@ namespace Entity.Context
             var connection = Database.GetDbConnection();
             return await connection.QueryAsync<T>(command.Definition);
         }
+
+        public async Task<T>QueryFirstOrDefaultAsync<T>(string text, object parameters = null, int? timeout = null, CommandType? type = null)
+        {
+            using var command = new DapperEFCoreCommand(this, text, parameters, timeout, type, CancellationToken.None);
+            var connection = Database.GetDbConnection();
+            return await connection.QueryFirstOrDefaultAsync<T>(command.Definition);
+        }
+
         private void EnsureAudit()
         {
             ChangeTracker.DetectChanges();
