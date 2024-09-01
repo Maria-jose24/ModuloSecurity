@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D067D664-B8BB-46A4-872B-9F9FF7AF0D0D}|Data\\Data.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\data\\implements\\viewdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D067D664-B8BB-46A4-872B-9F9FF7AF0D0D}|Data\\Data.csproj|solutionrelative:data\\implements\\viewdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D067D664-B8BB-46A4-872B-9F9FF7AF0D0D}|Data\\Data.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\data\\implements\\userroledata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D067D664-B8BB-46A4-872B-9F9FF7AF0D0D}|Data\\Data.csproj|solutionrelative:data\\implements\\userroledata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D067D664-B8BB-46A4-872B-9F9FF7AF0D0D}|Data\\Data.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\data\\implements\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D067D664-B8BB-46A4-872B-9F9FF7AF0D0D}|Data\\Data.csproj|solutionrelative:data\\implements\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\controllers\\implements\\viewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\controllers\\implements\\viewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\controllers\\implements\\userrolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\controllers\\implements\\userrolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\controllers\\implements\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\controllers\\implements\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\controllers\\implements\\roleviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\controllers\\implements\\roleviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|solutionrelative:diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\controllers\\implements\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\controllers\\implements\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,79 +35,67 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ViewData.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\ViewData.cs",
-              "RelativeDocumentMoniker": "Data\\Implements\\ViewData.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\ViewData.cs",
-              "RelativeToolTip": "Data\\Implements\\ViewData.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAADsAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T06:38:04.812Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserRoleData.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\UserRoleData.cs",
-              "RelativeDocumentMoniker": "Data\\Implements\\UserRoleData.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\UserRoleData.cs",
-              "RelativeToolTip": "Data\\Implements\\UserRoleData.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T06:37:45.86Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserData.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\UserData.cs",
-              "RelativeDocumentMoniker": "Data\\Implements\\UserData.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\UserData.cs",
-              "RelativeToolTip": "Data\\Implements\\UserData.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T06:37:18.257Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RoleViewController.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\RoleViewController.cs",
-              "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\RoleViewController.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\RoleViewController.cs",
-              "RelativeToolTip": "Web\\Controllers\\Implements\\RoleViewController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAD4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T06:34:11.845Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "ViewController.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\ViewController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\ViewController.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\ViewController.cs",
               "RelativeToolTip": "Web\\Controllers\\Implements\\ViewController.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAAADoAAAAUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-01T06:34:03.411Z",
+              "WhenOpened": "2024-09-01T15:49:48.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DBModel.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Diagram\\DBModel.edmx",
-              "RelativeDocumentMoniker": "Diagram\\DBModel.edmx",
-              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Diagram\\DBModel.edmx [Diagram1]",
-              "RelativeToolTip": "Diagram\\DBModel.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-09-01T05:51:07.903Z",
-              "EditorCaption": " [Diagram1]"
+              "DocumentIndex": 1,
+              "Title": "UserRoleController.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\UserRoleController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\UserRoleController.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\UserRoleController.cs",
+              "RelativeToolTip": "Web\\Controllers\\Implements\\UserRoleController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:49:32.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\UserController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\UserController.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\UserController.cs",
+              "RelativeToolTip": "Web\\Controllers\\Implements\\UserController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:49:20.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RoleViewController.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\RoleViewController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\RoleViewController.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\RoleViewController.cs",
+              "RelativeToolTip": "Web\\Controllers\\Implements\\RoleViewController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:49:09.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\RoleController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\RoleController.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\RoleController.cs",
+              "RelativeToolTip": "Web\\Controllers\\Implements\\RoleController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T15:48:58.031Z",
+              "EditorCaption": ""
             }
           ]
         }

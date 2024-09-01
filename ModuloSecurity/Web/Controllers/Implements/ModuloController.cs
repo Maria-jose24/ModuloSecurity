@@ -1,6 +1,8 @@
-﻿using Entity.DTO;
+﻿using Business.Interface;
+using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Web.Controllers.Implements
 {
@@ -11,7 +13,7 @@ namespace Web.Controllers.Implements
     {
         private readonly IModuloBusiness _moduloBusiness;
 
-        public ModuloController(IModuloBusiness moduloBusiness ) 
+        public ModuloController(IModuloBusiness moduloBusiness)
         {
         
             _moduloBusiness = moduloBusiness;
