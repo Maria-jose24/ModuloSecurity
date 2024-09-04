@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|solutionrelative:web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Entity\\Migrations\\20240904195752_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Entity\\Migrations\\20240904195752_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{79E0CF09-B7D4-4B7C-8576-8C46A8BAAC20}|Web\\Web.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\web\\controllers\\implements\\roleviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "20240904195752_initial.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Entity\\Migrations\\20240904195752_initial.cs",
+              "RelativeDocumentMoniker": "Entity\\Migrations\\20240904195752_initial.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Entity\\Migrations\\20240904195752_initial.cs",
+              "RelativeToolTip": "Entity\\Migrations\\20240904195752_initial.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T19:57:52.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RoleViewController.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Controllers\\Implements\\RoleViewController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\Implements\\RoleViewController.cs",
@@ -34,25 +51,24 @@
               "RelativeToolTip": "Web\\Controllers\\Implements\\RoleViewController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-04T19:13:19.508Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T19:13:19.508Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Program.cs",
               "RelativeDocumentMoniker": "Web\\Program.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\Program.cs",
               "RelativeToolTip": "Web\\Program.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAACIAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-04T00:51:01.006Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Web\\appsettings.json",
               "RelativeDocumentMoniker": "Web\\appsettings.json",
