@@ -82,6 +82,12 @@ namespace Entity.Context
 
         public DbSet<Modulo> Modulos => Set<Modulo>();
 
+        public DbSet<City> Citys => Set<City>();
+
+        public DbSet<State> States => Set<State>();
+
+        public DbSet<Countries> Countries => Set<Countries>();
+        
         public readonly struct DapperEFCoreCommand : IDisposable
         {
             public DapperEFCoreCommand(DbContext context,string text, object parameters, int? timeout, CommandType? type, CancellationToken ct)
