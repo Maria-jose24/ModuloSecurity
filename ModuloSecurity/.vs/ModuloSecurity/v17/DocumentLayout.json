@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{7F11F649-1A69-4CC0-80D6-1C46A2A8B60A}|Entity\\Entity.csproj|solutionrelative:entity\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|c:\\users\\usuario\\downloads\\modulosecurity\\modulosecurity\\diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "AbsoluteMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
       "RelativeMoniker": "D:0:0:{15601733-6AFB-425C-85F0-2B4EBA2762C4}|Diagram\\Diagram.csproj|solutionrelative:diagram\\dbmodel.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     }
   ],
@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "Entity\\Context\\ApplicationDBContext.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Entity\\Context\\ApplicationDBContext.cs",
               "RelativeToolTip": "Entity\\Context\\ApplicationDBContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-05T05:26:21.771Z",
               "EditorCaption": ""
@@ -42,8 +42,7 @@
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Diagram\\DBModel.edmx [Diagram1]",
               "RelativeToolTip": "Diagram\\DBModel.edmx [Diagram1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-09-05T01:58:48.245Z",
-              "EditorCaption": " [Diagram1]"
+              "WhenOpened": "2024-09-05T01:58:48.245Z"
             }
           ]
         }
