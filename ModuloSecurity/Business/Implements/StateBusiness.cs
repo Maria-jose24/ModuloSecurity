@@ -1,10 +1,11 @@
-﻿using Data.Interfaces;
+﻿using Business.Interface;
+using Data.Interfaces;
 using Entity.DTO;
 using Entity.Model.Security;
 
 namespace Business.Implements
 {
-    public class StateBusiness
+    public class StateBusiness : IStateBusiness
     {
         protected readonly IStateData data;
 

@@ -33,7 +33,7 @@ namespace Web.Controllers.Implements
             return Ok(result);
         }
         [HttpPost]
-        public async Task<ActionResult<Modulo>> Save([FromBody] CityDto entity)
+        public async Task<ActionResult<City>> Save([FromBody] CityDto entity)
         {
             if (entity == null)
             {
@@ -45,7 +45,7 @@ namespace Web.Controllers.Implements
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] CityDto entity)
         {
-            if (entity != null || entity.Id == 0)
+            if (entity == null || entity.Id == 0)
             {
                 return BadRequest();
             }

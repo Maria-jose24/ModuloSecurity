@@ -26,7 +26,7 @@ namespace Data.Implements
                 throw new Exception("Registro no encontrado");
             }
             entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
-            context.RoleViews.Update(entity);
+            context.RoleViews.Remove(entity);
             await context.SaveChangesAsync();
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()

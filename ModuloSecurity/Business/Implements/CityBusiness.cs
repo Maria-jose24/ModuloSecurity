@@ -23,6 +23,7 @@ namespace Business.Implements
             var cityDtos = citys.Select(city => new CityDto
             {
                 Id = city.Id,
+                Name = city.Name,
                 Postalcode = city.Postalcode,
             });
             return cityDtos;
@@ -37,7 +38,7 @@ namespace Business.Implements
             CityDto cityDto = new CityDto();
 
             cityDto.Id = city.Id;
-            city.Name = city.Name;
+            cityDto.Name = city.Name;
             cityDto.Postalcode = city.Postalcode;
             return cityDto;
         }
