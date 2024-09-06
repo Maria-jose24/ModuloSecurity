@@ -72,7 +72,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\ViewData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\ViewData.cs",
               "RelativeToolTip": "Data\\Implements\\ViewData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAANAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAEEAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:50:04.963Z",
               "EditorCaption": ""
@@ -85,7 +85,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\UserRoleData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\UserRoleData.cs",
               "RelativeToolTip": "Data\\Implements\\UserRoleData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAkAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAEEAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:49:52.338Z",
               "EditorCaption": ""
@@ -98,7 +98,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\UserData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\UserData.cs",
               "RelativeToolTip": "Data\\Implements\\UserData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAgAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAAAEEAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:49:44.857Z",
               "EditorCaption": ""
@@ -111,7 +111,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\StateData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\StateData.cs",
               "RelativeToolTip": "Data\\Implements\\StateData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAhAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAAAEAAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:49:36.879Z",
               "EditorCaption": ""
@@ -124,7 +124,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\RoleViewData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\RoleViewData.cs",
               "RelativeToolTip": "Data\\Implements\\RoleViewData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAkAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAAAEgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:49:28.44Z",
               "EditorCaption": ""
@@ -137,7 +137,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\RoleData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\RoleData.cs",
               "RelativeToolTip": "Data\\Implements\\RoleData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAgAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAAAEEAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:49:16.345Z",
               "EditorCaption": ""
@@ -150,7 +150,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\PersonData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\PersonData.cs",
               "RelativeToolTip": "Data\\Implements\\PersonData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAiAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAAAEEAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:49:05.477Z",
               "EditorCaption": ""
@@ -163,7 +163,7 @@
               "RelativeDocumentMoniker": "Data\\Implements\\ModuloData.cs",
               "ToolTip": "C:\\Users\\Usuario\\Downloads\\ModuloSecurity\\ModuloSecurity\\Data\\Implements\\ModuloData.cs",
               "RelativeToolTip": "Data\\Implements\\ModuloData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAiAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAAAEAAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-06T19:48:54.316Z",
               "EditorCaption": ""
@@ -191,8 +191,7 @@
               "RelativeToolTip": "Entity\\Context\\ApplicationDBContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T19:30:40.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-06T19:30:40.885Z"
             },
             {
               "$type": "Document",
@@ -204,8 +203,7 @@
               "RelativeToolTip": "Entity\\DTO\\CityDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T19:01:48.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-06T19:01:48.872Z"
             },
             {
               "$type": "Document",
@@ -217,8 +215,7 @@
               "RelativeToolTip": "Data\\Implements\\CityData.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAAAA4AAABTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T18:50:11.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-06T18:50:11.107Z"
             },
             {
               "$type": "Document",
@@ -230,8 +227,7 @@
               "RelativeToolTip": "Business\\Implements\\CityBusiness.cs",
               "ViewState": "AQIAABcAAAAAAAAAAAAgwA4AAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-06T18:32:11.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-06T18:32:11.784Z"
             }
           ]
         }

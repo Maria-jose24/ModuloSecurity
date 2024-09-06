@@ -35,7 +35,7 @@ namespace Data.Implements
                 Id,
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
-                RoleView
+                RoleViews
                 WHERE DeletedAt IS NULL AND State = 1
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
@@ -43,7 +43,7 @@ namespace Data.Implements
         }
         public async Task<RoleView> GetById(int id)
         {
-            var sql = @"SELECT * FROM RoleView WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM RoleViews WHERE Id = @Id ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<RoleView>(sql, new { Id = id });
         }
         public async Task<RoleView> Save(RoleView entity)
@@ -63,7 +63,7 @@ namespace Data.Implements
         }
         public async Task<IEnumerable<RoleView>> GetAll()
         {
-            var sql = @"SELECT * FROM RoleView ORDER BY Id ASC";
+            var sql = @"SELECT * FROM RoleViews ORDER BY Id ASC";
             return await this.context.QueryAsync<RoleView>(sql);
         }
 

@@ -35,7 +35,7 @@ namespace Data.Implements
                 Id,
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
-                Role
+                Roles
                 WHERE DeletedAt IS NULL AND State = 1
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
@@ -43,7 +43,7 @@ namespace Data.Implements
         }
         public async Task<Role> GetById(int id)
         {
-            var sql = @"SELECT * FROM Role WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM Roles WHERE Id = @Id ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<Role>(sql, new { Id = id });
         }
         public async Task<Role> Save(Role entity)
@@ -63,7 +63,7 @@ namespace Data.Implements
         }
         public async Task<IEnumerable<Role>> GetAll()
         {
-            var sql = @"SELECT * FROM Role ORDER BY Id ASC";
+            var sql = @"SELECT * FROM Roles ORDER BY Id ASC";
             return await this.context.QueryAsync<Role>(sql);
         }
 
