@@ -47,7 +47,7 @@ namespace Web.Controllers.Implements
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] ModuloDto entity)
         {
-            if (entity != null || entity.Id == 0)
+            if (entity == null || entity.Id == 0)
             {
                 return BadRequest();
             }
