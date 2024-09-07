@@ -74,7 +74,7 @@
           <Property Name="Birth_of_date" Type="DateTime" Nullable="false" />
           <Property Name="CreateAt" Type="DateTime" Nullable="false" />
           <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-          <Property Name="Phone" Type="Int16" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" />
           <Property Name="State" Type="Boolean" Nullable="false" />
           <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="CityId" Relationship="DBModel.CityPerson" FromRole="Person" ToRole="City" />

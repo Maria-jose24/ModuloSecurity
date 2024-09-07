@@ -16,6 +16,8 @@
 
         public bool State {  get; set; }
 
-        public int IdModulo {  get; set; }
+        public int ModuloId {  get; set; }
+
+        public Modulo Modulo { get; set; }
     }
 }

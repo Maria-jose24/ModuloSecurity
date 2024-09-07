@@ -33,7 +33,7 @@ namespace Data.Implements
         {
             var sql = @"SELECT
                 Id,
-                CONCAT(Name, '-', Description) AS TextoMostrar
+                CONCAT(Name, '-', Description, State) AS TextoMostrar
                 FROM
                 Roles
                 WHERE DeletedAt IS NULL AND State = 1

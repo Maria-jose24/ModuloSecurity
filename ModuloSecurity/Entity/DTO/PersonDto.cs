@@ -18,7 +18,7 @@
 
         public DateTime Birth_of_date_ { get; set; }
 
-        public int Phone { get; set; }
+        public string Phone { get; set; }
 
         public bool State { get; set; }
     }

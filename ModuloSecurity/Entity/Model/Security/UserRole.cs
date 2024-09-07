@@ -12,8 +12,12 @@
 
         public bool State {  get; set; }
 
-        public int IdRole {  get; set; }
+        public int RoleId {  get; set; }
+
+        public Role Role { get; set; }
+
+        public User User { get; set; }
          
-        public int IdUser {  get; set; }
+        public int UserId {  get; set; }
     }
 }

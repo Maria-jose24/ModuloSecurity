@@ -47,6 +47,7 @@ namespace Business.Implements
 
             personDto.Id = id;
             personDto.First_name = person.First_name;
+            personDto.Last_name = person.Last_name;
             personDto.Email = person.Email;
             personDto.Address = person.Address;
             personDto.Type_document = person.Type_document;
@@ -59,6 +60,7 @@ namespace Business.Implements
         public Person mapearDatos(Person person, PersonDto entity)
         {
             person.Id = entity.Id;
+            person.Last_name = entity.Last_name;
             person.First_name = entity.First_name;
             person.Email = entity.Email;
             person.Address = entity.Address;

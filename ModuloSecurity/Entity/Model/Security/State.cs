@@ -11,5 +11,6 @@
         public DateTime DeleteAt { get; set; }
 
         public DateTime UpdateAt { get; set; }
+
     }
 }
