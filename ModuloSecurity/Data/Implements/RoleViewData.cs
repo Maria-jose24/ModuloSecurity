@@ -36,7 +36,7 @@ namespace Data.Implements
                 CONCAT(Name, '-', State) AS TextoMostrar
                 FROM
                 RoleViews
-                WHERE DeletedAt IS NULL AND State = 1
+                WHERE DeleteAt IS NULL AND State = 1
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
 

@@ -17,10 +17,11 @@
         public bool State {  get; set; }
 
 
+        //Asociaciones
         public int PersonId { get; set; }
 
         public Person  Person { get; set; }
 
-
+        public UserRole UserRole { get; set; }
     }
 }

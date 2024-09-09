@@ -19,7 +19,7 @@ namespace Business.Implements
         }
         public async Task<IEnumerable<StateDto>> GetAll()
         {
-            IEnumerable<State> states = await this.data.GetAll();
+            IEnumerable<State> states = (IEnumerable<State>) await this.data.GetAll();
             var stateDtos = states.Select(state => new StateDto
             {
                 Id = state.Id,

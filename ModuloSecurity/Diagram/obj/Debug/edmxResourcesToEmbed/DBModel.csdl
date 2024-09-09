@@ -12,14 +12,6 @@
       <End Role="Person" EntitySet="PersonSet" />
       <End Role="User" EntitySet="UserSet" />
     </AssociationSet>
-    <AssociationSet Name="UserUserRole" Association="DBModel.UserUserRole">
-      <End Role="User" EntitySet="UserSet" />
-      <End Role="UserRole" EntitySet="UserRoleSet" />
-    </AssociationSet>
-    <AssociationSet Name="RoleRoleView" Association="DBModel.RoleRoleView">
-      <End Role="Role" EntitySet="RoleSet" />
-      <End Role="RoleView" EntitySet="RoleViewSet" />
-    </AssociationSet>
     <AssociationSet Name="RoleViewView" Association="DBModel.RoleViewView">
       <End Role="RoleView" EntitySet="RoleViewSet" />
       <End Role="View" EntitySet="ViewSet" />
@@ -29,23 +21,31 @@
       <End Role="Modulo" EntitySet="ModuloSet" />
     </AssociationSet>
     <AssociationSet Name="UserRoleRole" Association="DBModel.UserRoleRole">
-      <End Role="UserRole" EntitySet="UserRoleSet" />
-      <End Role="Role" EntitySet="RoleSet" />
+      <End EntitySet="UserRoleSet" Role="UserRole" />
+      <End EntitySet="RoleSet" Role="Role" />
     </AssociationSet>
     <EntitySet Name="CitySet" EntityType="DBModel.City" />
     <EntitySet Name="StateSet" EntityType="DBModel.State" />
     <EntitySet Name="CountriesSet" EntityType="DBModel.Countries" />
-    <AssociationSet Name="CityPerson" Association="DBModel.CityPerson">
-      <End Role="City" EntitySet="CitySet" />
+    <AssociationSet Name="PersonCity" Association="DBModel.PersonCity">
       <End Role="Person" EntitySet="PersonSet" />
-    </AssociationSet>
-    <AssociationSet Name="StateCity" Association="DBModel.StateCity">
-      <End Role="State" EntitySet="StateSet" />
       <End Role="City" EntitySet="CitySet" />
     </AssociationSet>
-    <AssociationSet Name="CountriesState" Association="DBModel.CountriesState">
-      <End Role="Countries" EntitySet="CountriesSet" />
+    <AssociationSet Name="CityState" Association="DBModel.CityState">
+      <End Role="City" EntitySet="CitySet" />
       <End Role="State" EntitySet="StateSet" />
+    </AssociationSet>
+    <AssociationSet Name="StateCountries" Association="DBModel.StateCountries">
+      <End Role="State" EntitySet="StateSet" />
+      <End Role="Countries" EntitySet="CountriesSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserRole" Association="DBModel.UserUserRole">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="UserRole" EntitySet="UserRoleSet" />
+    </AssociationSet>
+    <AssociationSet Name="RoleRoleView" Association="DBModel.RoleRoleView">
+      <End Role="Role" EntitySet="RoleSet" />
+      <End Role="RoleView" EntitySet="RoleViewSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Person">
@@ -62,10 +62,11 @@
     <Property Name="Birth_of_date" Type="DateTime" Nullable="false" />
     <Property Name="CreateAt" Type="DateTime" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-    <Property Name="Phone" Type="Int16" Nullable="false" />
+    <Property Name="Phone" Type="String" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
     <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
-    <NavigationProperty Name="CityId" Relationship="DBModel.CityPerson" FromRole="Person" ToRole="City" />
+    <Property Name="city_residence" Type="String" Nullable="false" />
+    <NavigationProperty Name="CityId" Relationship="DBModel.PersonCity" FromRole="Person" ToRole="City" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -78,7 +79,7 @@
     <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdPerson" Relationship="DBModel.PersonUser" FromRole="User" ToRole="Person" />
+    <NavigationProperty Name="PersonId" Relationship="DBModel.PersonUser" FromRole="User" ToRole="Person" />
   </EntityType>
   <EntityType Name="UserRole">
     <Key>
@@ -89,8 +90,8 @@
     <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdUser" Relationship="DBModel.UserUserRole" FromRole="UserRole" ToRole="User" />
-    <NavigationProperty Name="IdRole" Relationship="DBModel.UserRoleRole" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="RoleId" Relationship="DBModel.UserRoleRole" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="UserId" Relationship="DBModel.UserUserRole" FromRole="UserRole" ToRole="User" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -113,8 +114,8 @@
     <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdRole" Relationship="DBModel.RoleRoleView" FromRole="RoleView" ToRole="Role" />
-    <NavigationProperty Name="IdView" Relationship="DBModel.RoleViewView" FromRole="RoleView" ToRole="View" />
+    <NavigationProperty Name="ViewId" Relationship="DBModel.RoleViewView" FromRole="RoleView" ToRole="View" />
+    <NavigationProperty Name="RoleId" Relationship="DBModel.RoleRoleView" FromRole="RoleView" ToRole="Role" />
   </EntityType>
   <EntityType Name="View">
     <Key>
@@ -127,7 +128,7 @@
     <Property Name="UpdateAt" Type="Boolean" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
     <Property Name="State" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="IdModulo" Relationship="DBModel.ViewModulo" FromRole="View" ToRole="Modulo" />
+    <NavigationProperty Name="ModuloId" Relationship="DBModel.ViewModulo" FromRole="View" ToRole="Modulo" />
   </EntityType>
   <EntityType Name="Modulo">
     <Key>
@@ -144,22 +145,6 @@
     <End Type="DBModel.Person" Role="Person" Multiplicity="1" />
     <End Type="DBModel.User" Role="User" Multiplicity="1" />
   </Association>
-  <Association Name="UserUserRole">
-    <End Type="DBModel.User" Role="User" Multiplicity="1" />
-    <End Type="DBModel.UserRole" Role="UserRole" Multiplicity="*" />
-  </Association>
-  <Association Name="RoleRoleView">
-    <End Type="DBModel.Role" Role="Role" Multiplicity="1" />
-    <End Type="DBModel.RoleView" Role="RoleView" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RoleView">
-        <PropertyRef Name="RoleId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="RoleViewView">
     <End Type="DBModel.RoleView" Role="RoleView" Multiplicity="*" />
     <End Type="DBModel.View" Role="View" Multiplicity="1" />
@@ -169,8 +154,8 @@
     <End Type="DBModel.Modulo" Role="Modulo" Multiplicity="1" />
   </Association>
   <Association Name="UserRoleRole">
-    <End Type="DBModel.UserRole" Role="UserRole" Multiplicity="*" />
-    <End Type="DBModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="DBModel.UserRole" Multiplicity="*" Role="UserRole" />
+    <End Type="DBModel.Role" Multiplicity="1" Role="Role" />
   </Association>
   <EntityType Name="City">
     <Key>
@@ -182,8 +167,7 @@
     <Property Name="CreateAt" Type="DateTime" Nullable="false" />
     <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-    <NavigationProperty Name="PersonId" Relationship="DBModel.CityPerson" FromRole="City" ToRole="Person" />
-    <NavigationProperty Name="StateId" Relationship="DBModel.StateCity" FromRole="City" ToRole="State" />
+    <NavigationProperty Name="StateId" Relationship="DBModel.CityState" FromRole="City" ToRole="State" />
   </EntityType>
   <EntityType Name="State">
     <Key>
@@ -194,8 +178,7 @@
     <Property Name="CreateAt" Type="DateTime" Nullable="false" />
     <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-    <NavigationProperty Name="CityId" Relationship="DBModel.StateCity" FromRole="State" ToRole="City" />
-    <NavigationProperty Name="CountriesId" Relationship="DBModel.CountriesState" FromRole="State" ToRole="Countries" />
+    <NavigationProperty Name="CountriesId" Relationship="DBModel.StateCountries" FromRole="State" ToRole="Countries" />
   </EntityType>
   <EntityType Name="Countries">
     <Key>
@@ -206,42 +189,25 @@
     <Property Name="CreateAt" Type="DateTime" Nullable="false" />
     <Property Name="UpdateAt" Type="DateTime" Nullable="false" />
     <Property Name="DeleteAt" Type="DateTime" Nullable="false" />
-    <NavigationProperty Name="StateId" Relationship="DBModel.CountriesState" FromRole="Countries" ToRole="State" />
   </EntityType>
-  <Association Name="CityPerson">
-    <End Type="DBModel.City" Role="City" Multiplicity="1" />
+  <Association Name="PersonCity">
     <End Type="DBModel.Person" Role="Person" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Person">
-        <PropertyRef Name="CityId1" />
-      </Dependent>
-    </ReferentialConstraint>
+    <End Type="DBModel.City" Role="City" Multiplicity="1" />
   </Association>
-  <Association Name="StateCity">
-    <End Type="DBModel.State" Role="State" Multiplicity="1" />
+  <Association Name="CityState">
     <End Type="DBModel.City" Role="City" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="State">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="City">
-        <PropertyRef Name="StateId1" />
-      </Dependent>
-    </ReferentialConstraint>
+    <End Type="DBModel.State" Role="State" Multiplicity="1" />
   </Association>
-  <Association Name="CountriesState">
-    <End Type="DBModel.Countries" Role="Countries" Multiplicity="1" />
+  <Association Name="StateCountries">
     <End Type="DBModel.State" Role="State" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Countries">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="State">
-        <PropertyRef Name="CountriesId1" />
-      </Dependent>
-    </ReferentialConstraint>
+    <End Type="DBModel.Countries" Role="Countries" Multiplicity="1" />
+  </Association>
+  <Association Name="UserUserRole">
+    <End Type="DBModel.User" Role="User" Multiplicity="1" />
+    <End Type="DBModel.UserRole" Role="UserRole" Multiplicity="*" />
+  </Association>
+  <Association Name="RoleRoleView">
+    <End Type="DBModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="DBModel.RoleView" Role="RoleView" Multiplicity="*" />
   </Association>
 </Schema>

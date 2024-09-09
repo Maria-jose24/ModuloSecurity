@@ -5,12 +5,12 @@ namespace Data.Interfaces
 {
     public interface ICityData
     {
-        public Task Delete(int id);
-        public Task<City> GetById(int id);
-        public Task<City> Save(City entity);
-        public Task Update(City entity);
-        public Task<IEnumerable<City>> GetAll();
-        public Task<City> GetByName(string name);
+        Task<City> GetById(int id);
+        Task<City> Save(City entity);
+        Task Update(City entity);
+        Task<IEnumerable<City>> GetAll();
+        Task<City> GetByName(string name);
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        Task Delete(int id);
     }
 }

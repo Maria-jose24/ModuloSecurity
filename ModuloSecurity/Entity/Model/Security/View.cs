@@ -16,6 +16,7 @@
 
         public bool State {  get; set; }
 
+        //Asociación
         public int ModuloId {  get; set; }
 
         public Modulo Modulo { get; set; }

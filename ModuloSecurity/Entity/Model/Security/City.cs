@@ -14,13 +14,12 @@
 
         public DateTime DeleteAt { get; set; }
 
-        public int PersonId { get; set; }
+        //Asociaciones
 
-        public Person Person { get; set; }
 
         public int StateId { get; set; }
 
-        public State state { get; set; }
+        public State State { get; set; }
 
 
 

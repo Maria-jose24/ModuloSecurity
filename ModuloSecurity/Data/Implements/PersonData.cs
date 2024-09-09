@@ -33,7 +33,7 @@ namespace Data.Implements
         {
             var sql = @"SELECT
                 Id,
-                CONCAT(Name, '-', Description) AS TextoMostrar
+                CONCAT(First_name ' ', Last_name) AS TextoMostrar
                 FROM
                 Persons
                 WHERE DeletedAt IS NULL AND State = 1
@@ -63,7 +63,9 @@ namespace Data.Implements
         }
         public async Task<IEnumerable<Person>> GetAll()
         {
-            var sql = @"SELECT * FROM Persons ORDER BY Id ASC";
+            var sql = @"SELECT p.*, c.Name AS CityName FROM Persons p LEFT JOIN 
+            city_residence c ON p.CityId = c.Id ORDER BY p.Id ASC";
+
             return await this.context.QueryAsync<Person>(sql);
         }
     }

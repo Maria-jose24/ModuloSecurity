@@ -12,5 +12,9 @@
 
         public DateTime UpdateAt { get; set; }
 
+        //Asociacion
+        public int CountriesId { get; set; }
+
+        public Countries Countries { get; set; }
     }
 }

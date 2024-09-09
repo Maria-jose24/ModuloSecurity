@@ -32,7 +32,8 @@ namespace Business.Implements
                 Document = person.Document,
                 Birth_of_date_ = person.Birth_of_date,
                 Phone = person.Phone,
-                State = person.State
+                State = person.State,
+                CityId = person.CityId,
             });
             return personDtos;
         }
@@ -55,6 +56,7 @@ namespace Business.Implements
             personDto.Birth_of_date_ = person.Birth_of_date;
             personDto.Phone = person.Phone;
             personDto.State = person.State;
+            personDto.CityId = person.CityId;
             return personDto;
         }
         public Person mapearDatos(Person person, PersonDto entity)
@@ -69,6 +71,7 @@ namespace Business.Implements
             person.Birth_of_date = entity.Birth_of_date_;
             person.Phone = entity.Phone;
             person.State = entity.State;
+            person.CityId = entity.CityId;
             return person;
         }
         public async Task<Person>Save(PersonDto entity)

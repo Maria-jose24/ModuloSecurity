@@ -32,10 +32,10 @@ namespace Data.Implements
         {
             var sql = @"SELECT
                 Id,
-                CONCAT(Name, '-',) AS TextoMostrar
+                CONCAT(Name) AS TextoMostrar
                 FROM
                 States
-                WHERE DeletedAt IS NULL AND State = 1
+                WHERE DeleteAt IS NULL AND State = 1
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
 
