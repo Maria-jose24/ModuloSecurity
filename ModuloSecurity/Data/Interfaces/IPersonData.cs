@@ -5,7 +5,8 @@ namespace Data.Interfaces
 {
     public interface IPersonData
     {
-        public Task Delete(int id);
+        public Task Delete(int id, bool isSoftDelete = true);
+
         public Task<Person> GetById(int id);
 
         public Task<Person> Save(Person entity);

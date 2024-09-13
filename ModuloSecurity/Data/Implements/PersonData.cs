@@ -18,17 +18,30 @@ namespace Data.Implements
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id)
+        // Eliminar persistente o lógico según el parámetro 'isSoftDelete'
+        public async Task Delete(int id, bool isSoftDelete = true)
         {
             var entity = await GetById(id);
             if (entity == null)
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
-            context.Persons.Remove(entity);
+
+            if (isSoftDelete)
+            {
+                // Eliminación lógica (marcar el registro como eliminado)
+                entity.DeleteAt = DateTime.Now; // Marca la fecha de eliminación
+                context.Persons.Update(entity);  // Actualiza el registro
+            }
+            else
+            {
+                // Eliminación física (eliminar el registro de la base de datos)
+                context.Persons.Remove(entity);
+            }
+
             await context.SaveChangesAsync();
         }
+
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             var sql = @"SELECT
