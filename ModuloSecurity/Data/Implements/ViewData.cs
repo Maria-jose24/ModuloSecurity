@@ -18,15 +18,26 @@ namespace Data.Implements
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id)
+        public async Task Delete(int id, bool isSoftDelete = true)
         {
             var entity = await GetById(id);
             if (entity == null)
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
-            context.Views.Remove(entity);
+
+            if (isSoftDelete)
+            {
+                // Borrado lógico
+                entity.DeleteAt = DateTime.Now;
+                context.Views.Update(entity);
+            }
+            else
+            {
+                // Borrado físico
+                context.Views.Remove(entity);
+            }
+
             await context.SaveChangesAsync();
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
@@ -42,8 +53,8 @@ namespace Data.Implements
 
         }
         public async Task<View> GetById(int id)
-        {
-            var sql = @"SELECT * FROM Views WHERE Id = @Id ORDER BY Id ASC";
+        { 
+            var sql = @"SELECT * FROM Views WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<View>(sql, new { Id = id });
         }
         public async Task<View> Save(View entity)

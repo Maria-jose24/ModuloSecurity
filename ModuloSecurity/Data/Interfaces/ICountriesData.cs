@@ -5,7 +5,7 @@ namespace Data.Interfaces
 {
     public interface ICountriesData
     {
-        public Task Delete(int id);
+        public Task Delete(int id, bool isSoftDelete = true);
         public Task<Countries> GetById(int id);
         public Task<Countries> Save(Countries entity);
         public Task Update(Countries entity);

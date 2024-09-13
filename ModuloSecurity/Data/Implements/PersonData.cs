@@ -29,18 +29,19 @@ namespace Data.Implements
 
             if (isSoftDelete)
             {
-                // Eliminación lógica (marcar el registro como eliminado)
-                entity.DeleteAt = DateTime.Now; // Marca la fecha de eliminación
-                context.Persons.Update(entity);  // Actualiza el registro
+                // Borrado lógico
+                entity.DeleteAt = DateTime.Now;
+                context.Persons.Update(entity);
             }
             else
             {
-                // Eliminación física (eliminar el registro de la base de datos)
+                // Borrado físico
                 context.Persons.Remove(entity);
             }
 
             await context.SaveChangesAsync();
         }
+
 
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
@@ -56,7 +57,7 @@ namespace Data.Implements
         }
         public async Task<Person> GetById(int id)
         {
-            var sql = @"SELECT * FROM Persons WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM Persons WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<Person>(sql, new { Id = id });
         }
         public async Task<Person> Save(Person entity)
@@ -76,9 +77,10 @@ namespace Data.Implements
         }
         public async Task<IEnumerable<Person>> GetAll()
         {
-            var sql = @"SELECT p.*, c.Name AS CityName FROM Persons p LEFT JOIN 
-            city_residence c ON p.CityId = c.Id ORDER BY p.Id ASC";
-
+            var sql = @"SELECT p.*, c.Name AS CityName FROM Persons p 
+                LEFT JOIN city_residence c ON p.CityId = c.Id 
+                WHERE p.DeleteAt IS NULL
+                ORDER BY p.Id ASC";
             return await this.context.QueryAsync<Person>(sql);
         }
     }

@@ -5,7 +5,7 @@ namespace Data.Interfaces
 {
     public interface IViewData
     {
-        public Task Delete(int id);
+        public Task Delete(int id, bool isSoftDelete = true);
 
         public Task<View> GetById(int id);
 

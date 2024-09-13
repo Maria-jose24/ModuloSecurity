@@ -18,15 +18,26 @@ namespace Data.Implements
             this.configuration = configuration;
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(int id, bool isSoftDelete = true)
         {
             var entity = await GetById(id);
             if (entity == null)
             {
                 throw new Exception("Registro no encontrado");
             }
-            entity.DeleteAt = DateTime.Parse(DateTime.Today.ToString());
-            context.Citys.Remove(entity);
+
+            if (isSoftDelete)
+            {
+                // Borrado lógico
+                entity.DeleteAt = DateTime.Now;
+                context.Citys.Update(entity);
+            }
+            else
+            {
+                // Borrado físico
+                context.Citys.Remove(entity);
+            }
+
             await context.SaveChangesAsync();
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
@@ -43,7 +54,7 @@ namespace Data.Implements
         }
         public async Task<City> GetById(int id)
         {
-            var sql = @"SELECT * FROM Citys WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM Citys WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<City>(sql, new { Id = id });
         }
         public async Task<City> Save(City entity)
@@ -54,20 +65,26 @@ namespace Data.Implements
         }
         public async Task Update(City entity)
         {
+            entity.UpdateAt = DateTime.Now;
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await context.SaveChangesAsync();
         }
+
+
         public async Task<City> GetByName(string name)
         {
             return await this.context.Citys.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<Person>> GetAll()
+        public async Task<IEnumerable<City>> GetAll()
         {
-            var sql = @"SELECT c.*, c.Name AS CityName FROM Persons p LEFT JOIN 
-            city_residence c ON p.CityId = c.Id ORDER BY p.Id ASC";
+            var sql = @"
+        SELECT c.*, s.Name AS StateName 
+        FROM Citys c 
+        LEFT JOIN States s ON c.StateId = s.Id
+        WHERE c.DeleteAt IS NULL 
+        ORDER BY c.Id ASC";
 
-            return await this.context.QueryAsync<Person>(sql);
+            return await this.context.QueryAsync<City>(sql);
         }
-
     }
 }

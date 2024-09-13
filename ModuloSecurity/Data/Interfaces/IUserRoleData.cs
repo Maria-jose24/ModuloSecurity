@@ -5,7 +5,7 @@ namespace Data.Interfaces
 {
     public interface IUserRoleData
     {
-        public Task Delete(int id);
+        public Task Delete(int id, bool isSoftDelete = true);
 
         public Task<UserRole> GetById(int id);
 

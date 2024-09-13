@@ -6,6 +6,7 @@ namespace Business.Interface
     public interface IPersonBusiness
     {
         Task<IEnumerable<PersonDto>> GetAll();
+
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
 
         Task<PersonDto> GetById(int id);

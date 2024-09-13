@@ -5,7 +5,7 @@ namespace Data.Interfaces
 {
     public interface IRoleData
     {
-        Task Delete(int id);
+        Task Delete(int id, bool isSoftDelete = true);
         Task<Role> GetById(int id);
         Task<Role> Save(Role entity);
         Task Update(Role entity);

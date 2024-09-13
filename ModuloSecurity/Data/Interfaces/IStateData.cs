@@ -5,7 +5,7 @@ namespace Data.Interfaces
 {
     public interface IStateData
     {
-        public Task Delete(int id);
+        public Task Delete(int id, bool isSoftDelete = true);
         public Task<State> GetById(int id);
         public Task<State> Save(State entity);
         public Task Update(State entity);

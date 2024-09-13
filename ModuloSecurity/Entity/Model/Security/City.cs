@@ -20,8 +20,6 @@
 
         public State State { get; set; }
 
-
-
     }
 }
     

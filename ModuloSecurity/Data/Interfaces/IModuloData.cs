@@ -5,7 +5,7 @@ namespace Data.Interfaces
 {
     public interface IModuloData
     {
-        public Task Delete(int id);
+        public Task Delete(int id, bool isSoftDelete = true);
         public Task<Modulo> GetById(int id);
         public Task<Modulo> Save(Modulo entity);
         public Task Update(Modulo entity);
