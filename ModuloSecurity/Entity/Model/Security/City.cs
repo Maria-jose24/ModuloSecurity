@@ -16,7 +16,6 @@
 
         //Asociaciones
 
-
         public int StateId { get; set; }
 
         public State State { get; set; }

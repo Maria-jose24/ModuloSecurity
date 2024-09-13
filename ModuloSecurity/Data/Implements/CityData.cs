@@ -61,10 +61,12 @@ namespace Data.Implements
         {
             return await this.context.Citys.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<City>> GetAll()
+        public async Task<IEnumerable<Person>> GetAll()
         {
-            var sql = @"SELECT * FROM Citys ORDER BY Id ASC";
-            return await this.context.QueryAsync<City>(sql);
+            var sql = @"SELECT c.*, c.Name AS CityName FROM Persons p LEFT JOIN 
+            city_residence c ON p.CityId = c.Id ORDER BY p.Id ASC";
+
+            return await this.context.QueryAsync<Person>(sql);
         }
 
     }
