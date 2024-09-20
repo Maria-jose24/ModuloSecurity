@@ -27,8 +27,16 @@ namespace Data.Implements
 
             if (isSoftDelete)
             {
-                // Borrado lógico
-                entity.DeleteAt = DateTime.Now;
+                // Si ya está eliminado, restaurarlo
+                if (entity.DeleteAt != null)
+                {
+                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
+                }
+                else
+                {
+                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
+                }
+
                 context.Modulos.Update(entity);
             }
             else
@@ -39,6 +47,7 @@ namespace Data.Implements
 
             await context.SaveChangesAsync();
         }
+
         public async Task<IEnumerable<DataSelectDto>>GetAllSelect()
         {
             var sql = @"SELECT

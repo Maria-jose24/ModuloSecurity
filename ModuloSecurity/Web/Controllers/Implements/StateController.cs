@@ -13,7 +13,6 @@ namespace Web.Controllers.Implements
 
         public StateController(IStateBusiness stateBusiness)
         {
-
             _stateBusiness = stateBusiness;
         }
         [HttpGet]
@@ -47,7 +46,7 @@ namespace Web.Controllers.Implements
         {
             if (entity == null || entity.Id == 0)
             {
-                return BadRequest();
+                return BadRequest("Datos inválidos");
             }
             await _stateBusiness.Update(entity);
             return NoContent();

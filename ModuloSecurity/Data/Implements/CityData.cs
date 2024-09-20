@@ -17,7 +17,6 @@ namespace Data.Implements
             this.context = context;
             this.configuration = configuration;
         }
-
         public async Task Delete(int id, bool isSoftDelete = true)
         {
             var entity = await GetById(id);
@@ -28,8 +27,16 @@ namespace Data.Implements
 
             if (isSoftDelete)
             {
-                // Borrado lógico
-                entity.DeleteAt = DateTime.Now;
+                // Si ya está eliminado, restaurarlo
+                if (entity.DeleteAt != null)
+                {
+                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
+                }
+                else
+                {
+                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
+                }
+
                 context.Citys.Update(entity);
             }
             else
@@ -47,10 +54,9 @@ namespace Data.Implements
                 CONCAT(Name, '-', Postalcode) AS TextoMostrar
                 FROM
                 Citys
-                WHERE DeletedAt IS NULL AND State = 1
+                WHERE DeletedAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
-
         }
         public async Task<City> GetById(int id)
         {
@@ -78,11 +84,11 @@ namespace Data.Implements
         public async Task<IEnumerable<City>> GetAll()
         {
             var sql = @"
-        SELECT c.*, s.Name AS StateName 
-        FROM Citys c 
-        LEFT JOIN States s ON c.StateId = s.Id
-        WHERE c.DeleteAt IS NULL 
-        ORDER BY c.Id ASC";
+                        SELECT c.*, s.Name AS State 
+                        FROM Citys c 
+                        INNER JOIN States s ON c.StateId = s.Id
+                        WHERE c.DeleteAt IS NULL 
+                        ORDER BY c.Id ASC";
 
             return await this.context.QueryAsync<City>(sql);
         }

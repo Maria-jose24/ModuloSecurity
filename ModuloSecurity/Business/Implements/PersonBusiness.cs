@@ -14,6 +14,22 @@ namespace Business.Implements
             this.data = data;
         }
 
+        public Person mapearDatos(Person person, PersonDto entity)
+        {
+            person.Id = entity.Id;
+            person.Last_name = entity.Last_name;
+            person.First_name = entity.First_name;
+            person.Email = entity.Email;
+            person.Address = entity.Address;
+            person.Type_document = entity.Type_document;
+            person.Document = entity.Document;
+            person.Birth_of_date = entity.Birth_of_date_;
+            person.Phone = entity.Phone;
+            person.State = entity.State;
+            person.CityId = entity.CityId;
+            return person;
+        }
+
         public async Task Delete(int id)
         {
             await this.data.Delete(id);
@@ -37,11 +53,13 @@ namespace Business.Implements
             });
             return personDtos;
         }
-    public async Task<IEnumerable<DataSelectDto>>GetAllSelect()
-    {
-        return await this.data.GetAllSelect();
-    }
-    public async Task<PersonDto> GetById(int id)
+
+        public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
+        {
+            return await this.data.GetAllSelect();
+        }
+
+        public async Task<PersonDto> GetById(int id)
         {
             Person person = await this.data.GetById(id);
             PersonDto personDto = new PersonDto();
@@ -59,27 +77,15 @@ namespace Business.Implements
             personDto.CityId = person.CityId;
             return personDto;
         }
-        public Person mapearDatos(Person person, PersonDto entity)
-        {
-            person.Id = entity.Id;
-            person.Last_name = entity.Last_name;
-            person.First_name = entity.First_name;
-            person.Email = entity.Email;
-            person.Address = entity.Address;
-            person.Type_document = entity.Type_document;
-            person.Document = entity.Document;
-            person.Birth_of_date = entity.Birth_of_date_;
-            person.Phone = entity.Phone;
-            person.State = entity.State;
-            person.CityId = entity.CityId;
-            return person;
-        }
+        
         public async Task<Person>Save(PersonDto entity)
         {
-            Person person = new Person();
-            person.CreateAt = DateTime.Now.AddHours(-5);
-            person = this.mapearDatos(person, entity);
+            Person person = new Person
+            {
+                CreateAt = DateTime.Now.AddHours(-5)
 
+            };
+            person = this.mapearDatos(person, entity);
             return await this.data.Save(person);
         }
         public async Task Update(PersonDto entity)
@@ -93,5 +99,6 @@ namespace Business.Implements
 
             await this.data.Update(person);
         }
+        
     }
 }

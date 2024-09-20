@@ -28,8 +28,16 @@ namespace Data.Implements
 
             if (isSoftDelete)
             {
-                // Borrado lógico
-                entity.DeleteAt = DateTime.Now;
+                // Si ya está eliminado, restaurarlo
+                if (entity.DeleteAt != null)
+                {
+                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
+                }
+                else
+                {
+                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
+                }
+
                 context.RoleViews.Update(entity);
             }
             else
@@ -40,6 +48,7 @@ namespace Data.Implements
 
             await context.SaveChangesAsync();
         }
+
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             var sql = @"SELECT
@@ -47,7 +56,7 @@ namespace Data.Implements
                 CONCAT(Name, '-', State) AS TextoMostrar
                 FROM
                 RoleViews
-                WHERE DeleteAt IS NULL AND State = 1
+                WHERE DeleteAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
 
@@ -80,4 +89,3 @@ namespace Data.Implements
 
     }
 }
-

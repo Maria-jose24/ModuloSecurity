@@ -47,14 +47,29 @@ namespace Web.Controllers.Implements
         {
             if (entity == null || entity.Id == 0)
             {
-                return BadRequest();
+                return BadRequest("Datos inválidos");
             }
+
+            var existingCity = await _cityBusiness.GetById(entity.Id);
+            if (existingCity == null)
+            {
+                return NotFound("La ciudad no fue encontrada.");
+            }
+
             await _cityBusiness.Update(entity);
             return NoContent();
         }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var existingCity = await _cityBusiness.GetById(id);
+            if (existingCity == null)
+            {
+                return NotFound("La ciudad no fue encontrada.");
+            }
+
             await _cityBusiness.Delete(id);
             return NoContent();
         }

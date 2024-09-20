@@ -13,6 +13,15 @@ namespace Business.Implements
         {
             this.data = data;
         }
+
+        public City mapearDatos(City city, CityDto entity)
+        {
+            city.Name = entity.Name;
+            city.Postalcode = entity.Postalcode;
+            city.StateId = entity.StateId;
+            return city;
+        }
+
         public async Task Delete(int id)
         {
             await this.data.Delete(id);
@@ -25,38 +34,36 @@ namespace Business.Implements
                 Id = city.Id,
                 Name = city.Name,
                 Postalcode = city.Postalcode,
+                StateId = city.StateId,
             });
             return cityDtos;
+        }
+        public async Task<CityDto> GetById(int id)
+        {
+            City city = await this.data.GetById(id);
+            CityDto cityDto = new CityDto
+            {
+                Id = city.Id,
+                Name = city.Name,
+                Postalcode = city.Postalcode,
+                StateId = city.StateId,
+            };
+            return cityDto;
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             return await this.data.GetAllSelect();
         }
-        public async Task<CityDto> GetById(int id)
-        {
-            City city = await this.data.GetById(id);
-            CityDto cityDto = new CityDto();
-
-            cityDto.Id = city.Id;
-            cityDto.Name = city.Name;
-            cityDto.Postalcode = city.Postalcode;
-            return cityDto;
-        }
-        public City mapearDatos(City city, CityDto entity)
-        {
-            city.Id = entity.Id;
-            city.Name = entity.Name;
-            city.Postalcode = entity.Postalcode;
-            return city;
-        }
         public async Task<City> Save(CityDto entity)
         {
-            City city = new City();
-            city.CreateAt = DateTime.Now.AddHours(-5);
+            City city = new City
+            {
+                CreateAt = DateTime.Now.AddHours(-5)
+            };
             city = this.mapearDatos(city, entity);
-
             return await this.data.Save(city);
         }
+
         public async Task Update(CityDto entity)
         {
             City city = await this.data.GetById(entity.Id);
@@ -64,7 +71,7 @@ namespace Business.Implements
             {
                 throw new Exception("Registro no encontrado");
             }
-            city = this.mapearDatos(city, entity);
+            city = this.mapearDatos(city, entity); 
             await this.data.Update(city);
         }
     }

@@ -7,6 +7,8 @@ namespace Business.Interface
     {
         Task Delete(int id);
         Task<IEnumerable<StateDto>> GetAll();
+        Task<IEnumerable<DataSelectDto>> GetAllSelect();
+
         Task<StateDto> GetById(int id);
 
         Task<State> Save(StateDto entity);

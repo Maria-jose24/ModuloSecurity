@@ -13,6 +13,13 @@ namespace Business.Implements
         {
             this.data = data;
         }
+        public State mapearDatos(State state, StateDto entity)
+        {
+            state.Id = entity.Id;
+            state.Name = entity.Name;
+            state.CountriesId = entity.CountriesId;
+            return state;
+        }
         public async Task Delete(int id)
         {
             await this.data.Delete(id);
@@ -24,6 +31,7 @@ namespace Business.Implements
             {
                 Id = state.Id,
                 Name = state.Name,
+                CountriesId = state.CountriesId,
             });
             return stateDtos;
         }
@@ -34,24 +42,23 @@ namespace Business.Implements
         public async Task<StateDto> GetById(int id)
         {
             State state = await this.data.GetById(id);
-            StateDto stateDto = new StateDto();
+            StateDto stateDto = new StateDto
+            {
+                Id = state.Id,
+                Name = state.Name,
+                CountriesId = state.CountriesId,
+            };
 
-            stateDto.Id = state.Id;
-            stateDto.Name = state.Name;
             return stateDto;
         }
-        public State mapearDatos(State state, StateDto entity)
-        {
-            state.Id = entity.Id;
-            state.Name = entity.Name;
-            return state;
-        }
+       
         public async Task<State> Save(StateDto entity)
         {
-            State state = new State();
-            state.CreateAt = DateTime.Now.AddHours(-5);
+            State state = new State
+            {
+                CreateAt = DateTime.Now.AddHours(-5),
+            };
             state = this.mapearDatos(state, entity);
-
             return await this.data.Save(state);
         }
         public async Task Update(StateDto entity)

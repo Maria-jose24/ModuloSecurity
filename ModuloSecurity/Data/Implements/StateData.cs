@@ -27,8 +27,16 @@ namespace Data.Implements
 
             if (isSoftDelete)
             {
-                // Borrado lógico
-                entity.DeleteAt = DateTime.Now;
+                // Si ya está eliminado, restaurarlo
+                if (entity.DeleteAt != null)
+                {
+                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
+                }
+                else
+                {
+                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
+                }
+
                 context.States.Update(entity);
             }
             else
@@ -39,6 +47,7 @@ namespace Data.Implements
 
             await context.SaveChangesAsync();
         }
+
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             var sql = @"SELECT
@@ -46,7 +55,7 @@ namespace Data.Implements
                 CONCAT(Name) AS TextoMostrar
                 FROM
                 States
-                WHERE DeleteAt IS NULL AND State = 1
+                WHERE DeleteAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
 
@@ -64,6 +73,7 @@ namespace Data.Implements
         }
         public async Task Update(State entity)
         {
+            entity.UpdateAt = DateTime.Now;
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await context.SaveChangesAsync();
         }
@@ -73,7 +83,12 @@ namespace Data.Implements
         }
         public async Task<IEnumerable<State>> GetAll()
         {
-            var sql = @"SELECT * FROM States ORDER BY Id ASC";
+            var sql = @"
+                        SELECT s.*, c.Name AS State 
+                        FROM States c 
+                        INNER JOIN Countries c ON s.CountriesId = c.Id
+                        WHERE s.DeleteAt IS NULL 
+                        ORDER BY s.Id ASC";
             return await this.context.QueryAsync<State>(sql);
         }
     }

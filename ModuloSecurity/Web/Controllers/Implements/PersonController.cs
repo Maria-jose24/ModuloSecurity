@@ -48,7 +48,12 @@ namespace Web.Controllers.Implements
         {
             if (entity == null || entity.Id == 0)
             {
-                return BadRequest();
+                return BadRequest("Datos inválidos");
+            }
+            var existingPerson = await _personBusiness.GetById(entity.Id);
+            if (existingPerson == null)
+            {
+                return NotFound("La persona no fue encontrada.");
             }
             await _personBusiness.Update(entity);
             return NoContent();
@@ -56,6 +61,11 @@ namespace Web.Controllers.Implements
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var existingPerson = await _personBusiness.GetById(id);
+            if ( existingPerson == null )
+            {
+                return NotFound("La persona no fue encontrada.");
+            }
             await _personBusiness.Delete(id);
             return NoContent();
         }

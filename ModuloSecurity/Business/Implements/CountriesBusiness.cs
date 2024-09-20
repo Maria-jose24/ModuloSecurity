@@ -13,6 +13,12 @@ namespace Business.Implements
         {
             this.data = data;
         }
+        public Countries mapearDatos(Countries countries, CountriesDto entity)
+        {
+            countries.Id = entity.Id;
+            countries.Name = entity.Name;
+            return countries;
+        }
         public async Task Delete(int id)
         {
             await this.data.Delete(id);
@@ -40,18 +46,14 @@ namespace Business.Implements
             countriesDto.Name = countries.Name;
             return countriesDto;
         }
-        public Countries mapearDatos(Countries countries, CountriesDto entity)
-        {
-            countries.Id = entity.Id;
-            countries.Name = entity.Name;
-            return countries;
-        }
+        
         public async Task<Countries> Save(CountriesDto entity)
         {
-            Countries countries = new Countries();
-            countries.CreateAt = DateTime.Now.AddHours(-5);
+            Countries countries = new Countries
+            {
+                CreateAt = DateTime.Now.AddHours(-5)
+            };
             countries = this.mapearDatos(countries, entity);
-
             return await this.data.Save(countries);
         }
         public async Task Update(CountriesDto entity)

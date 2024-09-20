@@ -28,8 +28,16 @@ namespace Data.Implements
 
             if (isSoftDelete)
             {
-                // Borrado lógico
-                entity.DeleteAt = DateTime.Now;
+                // Si ya está eliminado, restaurarlo
+                if (entity.DeleteAt != null)
+                {
+                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
+                }
+                else
+                {
+                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
+                }
+
                 context.Users.Update(entity);
             }
             else
@@ -47,7 +55,7 @@ namespace Data.Implements
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
                 Users
-                WHERE DeletedAt IS NULL AND State = 1
+                WHERE DeletedAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
 
