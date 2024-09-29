@@ -9,5 +9,6 @@
         public string Password { get; set; }
 
         public bool State { get; set; }
+        public string PersonEmail { get; set; }
     }
 }

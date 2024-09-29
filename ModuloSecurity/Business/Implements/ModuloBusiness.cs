@@ -17,9 +17,13 @@ namespace Business.Implements
         {
             await this.data.Delete(id);
         }
+        public async Task LogicalDelete(int id)
+        {
+            await this.data.LogicalDelete(id);
+        }
         public async Task<IEnumerable<ModuloDto>>GetAll()
         {
-            IEnumerable<Modulo> modulos = await this.data.GetAll();
+            IEnumerable<Modulo> modulos = (IEnumerable<Modulo>)await this.data.GetAll();
             var moduloDtos = modulos.Select(modulo => new ModuloDto
             {
                 Id = modulo.Id,
@@ -51,15 +55,17 @@ namespace Business.Implements
         }
         public async Task<Modulo>Save(ModuloDto entity)
         {
-            Modulo modulo = new Modulo();
-            modulo.CreateAt = DateTime.Now.AddHours(-5);
+            Modulo modulo = new Modulo
+            {
+                CreateAt = DateTime.Now.AddHours(-5)
+            };
             modulo = this.mapearDatos(modulo, entity);
-
             return await this.data.Save(modulo);
         }
         public async Task Update(ModuloDto entity)
         {
             Modulo modulo = await this.data.GetById(entity.Id);
+            modulo.UpdateAt = DateTime.Now.AddHours(-5);
             if(modulo == null)
             {
                 throw new Exception("Registro no encontrado");

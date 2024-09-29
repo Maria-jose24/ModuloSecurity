@@ -5,12 +5,13 @@ namespace Data.Interfaces
 {
     public interface IStateData
     {
-        public Task Delete(int id, bool isSoftDelete = true);
+        public Task Delete(int id);
+        public Task LogicalDelete(int id);
+        public Task<IEnumerable<StateDto>> GetAll();
+        Task<IEnumerable<DataSelectDto>> GetAllSelect();
         public Task<State> GetById(int id);
         public Task<State> Save(State entity);
         public Task Update(State entity);
-        public Task<IEnumerable<State>> GetAll();
-        public Task<State> GetByName(string name);
-        Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        Task<State> GetByName(string name);
     }
 }

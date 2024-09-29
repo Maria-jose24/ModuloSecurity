@@ -5,12 +5,13 @@ namespace Data.Interfaces
 {
     public interface ICountriesData
     {
-        public Task Delete(int id, bool isSoftDelete = true);
-        public Task<Countries> GetById(int id);
-        public Task<Countries> Save(Countries entity);
-        public Task Update(Countries entity);
-        public Task<IEnumerable<Countries>> GetAll();
-        public Task<Countries> GetByName(string name);
+        Task Delete(int id);
+        Task LogicalDelete(int id);
+        Task<IEnumerable<CountriesDto>> GetAll();
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        Task<Countries> GetById(int id);
+        Task<Countries> Save(Countries entity);
+        Task Update(Countries entity);
+        Task<Countries> GetByName(string name);
     }
 }

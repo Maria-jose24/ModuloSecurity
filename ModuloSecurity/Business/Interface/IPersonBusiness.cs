@@ -5,16 +5,11 @@ namespace Business.Interface
 {
     public interface IPersonBusiness
     {
-        Task<IEnumerable<PersonDto>> GetAll();
-
-        Task<IEnumerable<DataSelectDto>> GetAllSelect();
-
-        Task<PersonDto> GetById(int id);
-
-        Task<Person>Save(PersonDto entity);
-
-        Task Update(PersonDto entity);
-
         Task Delete(int id);
+        Task LogicalDelete(int id);
+        Task<PersonDto> GetById(int id);
+        Task<IEnumerable<PersonDto>> GetAll();
+        Task<Person>Save(PersonDto entity);
+        Task Update(PersonDto entity);
     }
 }

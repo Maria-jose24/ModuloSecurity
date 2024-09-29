@@ -17,34 +17,32 @@ namespace Data.Implements
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id, bool isSoftDelete = true)
+        public async Task Delete(int Id)
         {
-            var entity = await GetById(id);
+            var entity = await GetById(Id);
             if (entity == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
 
-            if (isSoftDelete)
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Modulos.Remove(entity);
+            await context.SaveChangesAsync();
+        }
+
+        // Método para eliminar un registro de ViewRol
+        public async Task LogicalDelete(int Id)
+        {
+            var entity = await GetById(Id);
+            if (entity == null)
             {
-                // Si ya está eliminado, restaurarlo
-                if (entity.DeleteAt != null)
-                {
-                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
-                }
-                else
-                {
-                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
-                }
-
-                context.Modulos.Update(entity);
-            }
-            else
-            {
-                // Borrado físico
-                context.Modulos.Remove(entity);
+                throw new Exception("Registro NO encontrado");
             }
 
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Modulos.Update(entity);
             await context.SaveChangesAsync();
         }
 
@@ -54,15 +52,20 @@ namespace Data.Implements
                 Id,
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
-                Modulos
+                modulos
                 WHERE DeletedAt IS NULL AND State = 1
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
 
         }
+        public async Task<IEnumerable<ModuloDto>> GetAll()
+        {
+            var sql = @"SELECT * FROM modulos WHERE DeleteAt IS NULL AND State = 1 ORDER BY Id ASC";
+            return await this.context.QueryAsync<ModuloDto>(sql);
+        }
         public async Task<Modulo>GetById(int id)
         {
-            var sql = @"SELECT * FROM Modulos WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
+            var sql = @"SELECT * FROM modulos WHERE Id = @Id ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<Modulo>(sql, new { Id = id });
         }
         public async Task<Modulo>Save(Modulo entity)
@@ -75,15 +78,6 @@ namespace Data.Implements
         {
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await context.SaveChangesAsync();
-        }
-        public async Task<Modulo>GetByName(string description)
-        {
-            return await this.context.Modulos.AsNoTracking().Where(item => item.Description == description).FirstOrDefaultAsync();
-        }
-        public async Task<IEnumerable<Modulo>>GetAll()
-        {
-            var sql = @"SELECT * FROM Modulos ORDER BY Id ASC";
-            return await this.context.QueryAsync<Modulo>(sql);
         }
 
     }

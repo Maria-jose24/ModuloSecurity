@@ -12,40 +12,35 @@ namespace Data.Implements
     {
         private readonly ApplicationDBContext context;
         protected readonly IConfiguration configuration;
-
         public RoleData(ApplicationDBContext context, IConfiguration configuration)
         {
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id, bool isSoftDelete = true)
+        public async Task Delete(int Id)
         {
-            var entity = await GetById(id);
+            var entity = await GetById(Id);
             if (entity == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
-
-            if (isSoftDelete)
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Roles.Remove(entity);
+            await context.SaveChangesAsync();
+        }
+        // Método para eliminar un registro de ViewRol
+        public async Task LogicalDelete(int Id)
+        {
+            var entity = await GetById(Id);
+            if (entity == null)
             {
-                // Si ya está eliminado, restaurarlo
-                if (entity.DeleteAt != null)
-                {
-                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
-                }
-                else
-                {
-                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
-                }
-
-                context.Roles.Update(entity);
-            }
-            else
-            {
-                // Borrado físico
-                context.Roles.Remove(entity);
+                throw new Exception("Registro NO encontrado");
             }
 
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Roles.Update(entity);
             await context.SaveChangesAsync();
         }
 
@@ -81,10 +76,10 @@ namespace Data.Implements
         {
             return await this.context.Roles.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<Role>> GetAll()
+        public async Task<IEnumerable<RoleDto>> GetAll()
         {
             var sql = @"SELECT * FROM Roles ORDER BY Id ASC";
-            return await this.context.QueryAsync<Role>(sql);
+            return await this.context.QueryAsync<RoleDto>(sql);
         }
 
     }

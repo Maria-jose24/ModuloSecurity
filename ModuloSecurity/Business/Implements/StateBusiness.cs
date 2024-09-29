@@ -13,25 +13,24 @@ namespace Business.Implements
         {
             this.data = data;
         }
-        public State mapearDatos(State state, StateDto entity)
-        {
-            state.Id = entity.Id;
-            state.Name = entity.Name;
-            state.CountriesId = entity.CountriesId;
-            return state;
-        }
         public async Task Delete(int id)
         {
             await this.data.Delete(id);
         }
+        public async Task LogicalDelete(int id)
+        {
+            await this.data.LogicalDelete(id);
+        }
+        
         public async Task<IEnumerable<StateDto>> GetAll()
         {
-            IEnumerable<State> states = (IEnumerable<State>) await this.data.GetAll();
+            IEnumerable<State> states = (IEnumerable<State>)await this.data.GetAll();
             var stateDtos = states.Select(state => new StateDto
             {
                 Id = state.Id,
                 Name = state.Name,
                 CountriesId = state.CountriesId,
+                CountriesName = state.Countries?.Name,
             });
             return stateDtos;
         }
@@ -42,16 +41,22 @@ namespace Business.Implements
         public async Task<StateDto> GetById(int id)
         {
             State state = await this.data.GetById(id);
-            StateDto stateDto = new StateDto
-            {
-                Id = state.Id,
-                Name = state.Name,
-                CountriesId = state.CountriesId,
-            };
+            StateDto stateDto = new StateDto();
+
+            stateDto.Id = state.Id;
+            stateDto.Name = state.Name;
+            stateDto.CountriesId = state.CountriesId;
 
             return stateDto;
         }
-       
+        public State mapearDatos(State state, StateDto entity)
+        {
+            state.Id = entity.Id;
+            state.Name = entity.Name;
+            state.CountriesId = entity.CountriesId;
+            return state;
+        }
+
         public async Task<State> Save(StateDto entity)
         {
             State state = new State
@@ -64,6 +69,7 @@ namespace Business.Implements
         public async Task Update(StateDto entity)
         {
             State state = await this.data.GetById(entity.Id);
+            state.UpdateAt = DateTime.Now.AddHours(-5);
             if (state == null)
             {
                 throw new Exception("Registro no encontrado");

@@ -13,25 +13,24 @@ namespace Business.Implements
         {
             this.data = data;
         }
-        public Countries mapearDatos(Countries countries, CountriesDto entity)
-        {
-            countries.Id = entity.Id;
-            countries.Name = entity.Name;
-            return countries;
-        }
         public async Task Delete(int id)
         {
             await this.data.Delete(id);
         }
+        public async Task LogicalDelete(int id)
+        {
+            await this.data.LogicalDelete(id);
+        }
+
         public async Task<IEnumerable<CountriesDto>> GetAll()
         {
-            IEnumerable<Countries> countries = await this.data.GetAll();
-            var countriesDtos = countries.Select(countries => new CountriesDto
+            IEnumerable<Countries> countries = (IEnumerable<Countries>)await this.data.GetAll();
+            var countriesDto = countries.Select(countries => new CountriesDto
             {
                 Id = countries.Id,
                 Name = countries.Name,
             });
-            return countriesDtos;
+            return countriesDto;
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
@@ -39,14 +38,36 @@ namespace Business.Implements
         }
         public async Task<CountriesDto> GetById(int id)
         {
-            Countries countries = await this.data.GetById(id);
-            CountriesDto countriesDto = new CountriesDto();
+            try
+            {
+                Countries countries = await this.data.GetById(id);
 
-            countriesDto.Id = countries.Id;
-            countriesDto.Name = countries.Name;
-            return countriesDto;
+                if (countries == null)
+                {
+                    // Puedes retornar `null` o un objeto especial en lugar de lanzar una excepción
+                    return null; // O podrías retornar un DTO con un mensaje de error si prefieres
+                }
+
+                CountriesDto countriesDto = new CountriesDto
+                {
+                    Id = countries.Id,
+                    Name = countries.Name
+                };
+
+                return countriesDto;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
-        
+        public Countries mapearDatos(Countries countries, CountriesDto entity)
+        {
+            countries.Id = entity.Id;
+            countries.Name = entity.Name;
+            return countries;
+        }
         public async Task<Countries> Save(CountriesDto entity)
         {
             Countries countries = new Countries
@@ -59,6 +80,7 @@ namespace Business.Implements
         public async Task Update(CountriesDto entity)
         {
             Countries countries = await this.data.GetById(entity.Id);
+            countries.UpdateAt = DateTime.Now.AddHours(-5);
             if (countries == null)
             {
                 throw new Exception("Registro no encontrado");

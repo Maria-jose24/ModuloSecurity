@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240920015303_initial")]
-    partial class initial
+    [Migration("20240929172059_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
@@ -44,7 +44,7 @@ namespace Entity.Migrations
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -63,14 +63,14 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -87,7 +87,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
@@ -97,7 +97,7 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -124,7 +124,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("Document")
@@ -153,7 +153,7 @@ namespace Entity.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -172,7 +172,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
@@ -186,7 +186,7 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -203,7 +203,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("RoleId")
@@ -212,7 +212,7 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("ViewId")
@@ -239,14 +239,14 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -265,7 +265,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Password")
@@ -278,7 +278,7 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Username")
@@ -301,7 +301,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("RoleId")
@@ -310,7 +310,7 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("UserId")
@@ -335,7 +335,7 @@ namespace Entity.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DeleteAt")
+                    b.Property<DateTime?>("DeleteAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
@@ -352,7 +352,7 @@ namespace Entity.Migrations
                     b.Property<bool>("State")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");

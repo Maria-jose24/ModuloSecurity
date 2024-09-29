@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace Entity.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,8 +23,8 @@ namespace Entity.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,8 +40,8 @@ namespace Entity.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(type: "longtext", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     State = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -59,8 +59,8 @@ namespace Entity.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false),
                     Description = table.Column<string>(type: "longtext", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     State = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -77,8 +77,8 @@ namespace Entity.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CountriesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -102,8 +102,8 @@ namespace Entity.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false),
                     Description = table.Column<string>(type: "longtext", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     State = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     ModuloId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -128,8 +128,8 @@ namespace Entity.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false),
                     Postalcode = table.Column<int>(type: "int", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     StateId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -151,8 +151,8 @@ namespace Entity.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     State = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     ViewId = table.Column<int>(type: "int", nullable: false)
@@ -189,8 +189,8 @@ namespace Entity.Migrations
                     Document = table.Column<int>(type: "int", nullable: false),
                     Birth_of_date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     Phone = table.Column<string>(type: "longtext", nullable: false),
                     State = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false)
@@ -216,8 +216,8 @@ namespace Entity.Migrations
                     Username = table.Column<string>(type: "longtext", nullable: false),
                     Password = table.Column<string>(type: "longtext", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     State = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     PersonId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -240,8 +240,8 @@ namespace Entity.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DeleteAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     State = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false)

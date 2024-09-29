@@ -17,15 +17,20 @@ namespace Business.Implements
         {
             await this.data.Delete(id);
         }
+        public async Task LogicalDelete(int id)
+        {
+            await this.data.LogicalDelete(id);
+        }
         public async Task<IEnumerable<UserDto>>GetAll()
         {
-            IEnumerable<User>users = await this.data.GetAll();
+            IEnumerable<User>users = (IEnumerable<User>)await this.data.GetAll();
             var userDtos = users.Select(user => new UserDto
             {
                 Id = user.Id,
                 Username = user.Username,
                 Password = user.Password,
                 State = user.State,
+                PersonEmail = user.Person?.Email
             });
             return userDtos;
         }
@@ -54,15 +59,17 @@ namespace Business.Implements
         }
         public async Task<User>Save(UserDto entity)
         {
-            User user = new User();
-            user.CreateAt = DateTime.Now.AddHours(-5);
+            User user = new User
+            {
+                CreateAt = DateTime.Now.AddHours(-5)
+            };
             user = this.mapearDatos(user, entity);
-
             return await this.data.Save(user);
         }
         public async Task Update(UserDto entity)
         {
             User user = await this.data.GetById(entity.Id);
+            user.UpdateAt = DateTime.Now.AddHours(-5);
             if (user == null)
             {
                 throw new Exception("Registro no encontrado");

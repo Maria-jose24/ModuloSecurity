@@ -68,6 +68,11 @@ namespace Entity.Context
             ChangeTracker.DetectChanges();
         }
 
+        public Task<T> QueryFirstOrDefaulAsync<T>(string sql, object value)
+        {
+            throw new NotImplementedException();
+        }
+
         public DbSet<Person> Persons => Set<Person>();
 
         public DbSet<User> Users => Set<User>();

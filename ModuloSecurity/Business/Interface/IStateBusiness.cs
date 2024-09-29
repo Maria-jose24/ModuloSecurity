@@ -6,13 +6,10 @@ namespace Business.Interface
     public interface IStateBusiness
     {
         Task Delete(int id);
-        Task<IEnumerable<StateDto>> GetAll();
-        Task<IEnumerable<DataSelectDto>> GetAllSelect();
-
+        Task LogicalDelete(int id);
         Task<StateDto> GetById(int id);
-
+        Task<IEnumerable<StateDto>> GetAll();
         Task<State> Save(StateDto entity);
-
         Task Update(StateDto entity);
     }
 }

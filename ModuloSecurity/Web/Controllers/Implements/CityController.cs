@@ -69,7 +69,6 @@ namespace Web.Controllers.Implements
             {
                 return NotFound("La ciudad no fue encontrada.");
             }
-
             await _cityBusiness.Delete(id);
             return NoContent();
         }

@@ -18,34 +18,30 @@ namespace Data.Implements
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id, bool isSoftDelete = true)
+        public async Task Delete(int Id)
         {
-            var entity = await GetById(id);
+            var entity = await GetById(Id);
             if (entity == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
-
-            if (isSoftDelete)
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Views.Remove(entity);
+            await context.SaveChangesAsync();
+        }
+        // Método para eliminar un registro de ViewRol
+        public async Task LogicalDelete(int Id)
+        {
+            var entity = await GetById(Id);
+            if (entity == null)
             {
-                // Si ya está eliminado, restaurarlo
-                if (entity.DeleteAt != null)
-                {
-                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
-                }
-                else
-                {
-                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
-                }
-
-                context.Views.Update(entity);
-            }
-            else
-            {
-                // Borrado físico
-                context.Views.Remove(entity);
+                throw new Exception("Registro NO encontrado");
             }
 
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Views.Update(entity);
             await context.SaveChangesAsync();
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
@@ -54,15 +50,29 @@ namespace Data.Implements
                 Id,
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
-                Views
-                WHERE DeletedAt IS NULL
+                views
+                WHERE DeletedAt IS NULL AND State = 1
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
+        }
+        public async Task<IEnumerable<ViewDto>> GetAll()
+        {
+            var sql = @"SELECT
+                vi.Id,
+                vi.Name,
+                vi.Description,
+                vi.State,
+                vi.ModuloId,
+                mo.Description AS DescriptionModulo
 
+                FROM views AS vi
+                INNERR JOIN modulos AS mo ON mo.Id = vi.ModuloId
+                WHERE IS NULL(vi.DeleteAt)";
+            return await this.context.QueryAsync<ViewDto>(sql);
         }
         public async Task<View> GetById(int id)
         { 
-            var sql = @"SELECT * FROM Views WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
+            var sql = @"SELECT * FROM views WHERE Id = @Id ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<View>(sql, new { Id = id });
         }
         public async Task<View> Save(View entity)
@@ -75,20 +85,6 @@ namespace Data.Implements
         {
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await context.SaveChangesAsync();
-        }
-        public async Task<View> GetByName(string name)
-        {
-            return await this.context.Views.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
-        }
-        public async Task<IEnumerable<View>> GetAll()
-        {
-            var sql = @"SELECT * FROM Views ORDER BY Id ASC";
-            return await this.context.QueryAsync<View>(sql);
-        }
-
-        public Task<UserRole> Save(UserRole userRole)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -6,14 +6,9 @@ namespace Web.Controllers.Interfaces
 {
     public interface ICityController
     {
-        Task<IActionResult> Delete(int id);
-
-        Task<ActionResult<CityDto>> GetById(int id);
-
-        Task<ActionResult<City>> Save([FromBody] CityDto cityDto);
-
-        Task<IActionResult> Update([FromBody] CityDto cityDto);
-
         Task<ActionResult<IEnumerable<CityDto>>> GetAll();
+        Task<ActionResult<City>> Save([FromBody] CityDto cityDto);
+        Task<IActionResult> Update([FromBody] CityDto cityDto);
+        Task<IActionResult> Delete(int id);
     }
 }

@@ -5,17 +5,16 @@ namespace Data.Interfaces
 {
     public interface IPersonData
     {
-        public Task Delete(int id, bool isSoftDelete = true);
-
+        public Task Delete(int id);
+        public Task LogicalDelete(int id);
         public Task<Person> GetById(int id);
 
         public Task<Person> Save(Person entity);
 
         public Task Update(Person entity);
 
-        public Task<IEnumerable<Person>> GetAll();
+        public Task<IEnumerable<PersonDto>> GetAll();
 
-        public Task<Person>GetByName(string name);
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
     }
 }

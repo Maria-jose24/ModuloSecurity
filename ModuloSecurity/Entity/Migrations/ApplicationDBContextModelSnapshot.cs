@@ -57,7 +57,7 @@ namespace Entity.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CreateAt")
+                    b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime?>("DeleteAt")

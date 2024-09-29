@@ -5,17 +5,12 @@ namespace Data.Interfaces
 {
     public interface IUserRoleData
     {
-        public Task Delete(int id, bool isSoftDelete = true);
-
+        public Task Delete(int id);
+        public Task LogicalDelete(int id);
         public Task<UserRole> GetById(int id);
-
-        public Task<UserRole> Save(UserRole entity);
-
-        public Task Update(UserRole entity);
-
-        public Task<IEnumerable<UserRole>> GetAll();
-
-        public Task<UserRole>GetByName(int id);
+        public Task<IEnumerable<UserRoleDto>> GetAll();
+        public Task<UserRole> Save(UserRole UserRole);
+        public Task Update(UserRole UserRole);
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
     }
 }

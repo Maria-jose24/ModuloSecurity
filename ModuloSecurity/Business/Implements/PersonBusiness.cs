@@ -13,32 +13,19 @@ namespace Business.Implements
         {
             this.data = data;
         }
-
-        public Person mapearDatos(Person person, PersonDto entity)
-        {
-            person.Id = entity.Id;
-            person.Last_name = entity.Last_name;
-            person.First_name = entity.First_name;
-            person.Email = entity.Email;
-            person.Address = entity.Address;
-            person.Type_document = entity.Type_document;
-            person.Document = entity.Document;
-            person.Birth_of_date = entity.Birth_of_date_;
-            person.Phone = entity.Phone;
-            person.State = entity.State;
-            person.CityId = entity.CityId;
-            return person;
-        }
-
         public async Task Delete(int id)
         {
             await this.data.Delete(id);
         }
+        public async Task LogicalDelete(int id)
+        {
+            await this.data.LogicalDelete(id);
+        }
         public async Task<IEnumerable<PersonDto>> GetAll()
         {
-            IEnumerable<Person> persons = await this.data.GetAll();
+            IEnumerable<Person> persons =(IEnumerable<Person>) await this.data.GetAll();
             var personDtos = persons.Select(person => new PersonDto
-            { 
+            {
                 Id = person.Id,
                 First_name = person.First_name,
                 Last_name = person.Last_name,
@@ -46,19 +33,18 @@ namespace Business.Implements
                 Address = person.Address,
                 Type_document = person.Type_document,
                 Document = person.Document,
-                Birth_of_date_ = person.Birth_of_date,
+                Birth_of_date = person.Birth_of_date,
                 Phone = person.Phone,
                 State = person.State,
                 CityId = person.CityId,
+                CityName = person.City?.Name
             });
             return personDtos;
         }
-
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             return await this.data.GetAllSelect();
         }
-
         public async Task<PersonDto> GetById(int id)
         {
             Person person = await this.data.GetById(id);
@@ -71,12 +57,28 @@ namespace Business.Implements
             personDto.Address = person.Address;
             personDto.Type_document = person.Type_document;
             personDto.Document = person.Document;
-            personDto.Birth_of_date_ = person.Birth_of_date;
+            personDto.Birth_of_date = person.Birth_of_date;
             personDto.Phone = person.Phone;
             personDto.State = person.State;
             personDto.CityId = person.CityId;
             return personDto;
         }
+        public Person mapearDatos(Person person, PersonDto entity)
+        {
+            person.Id = entity.Id;
+            person.Last_name = entity.Last_name;
+            person.First_name = entity.First_name;
+            person.Email = entity.Email;
+            person.Address = entity.Address;
+            person.Type_document = entity.Type_document;
+            person.Document = entity.Document;
+            person.Birth_of_date = entity.Birth_of_date;
+            person.Phone = entity.Phone;
+            person.State = entity.State;
+            person.CityId = entity.CityId;
+            return person;
+        }
+     
         
         public async Task<Person>Save(PersonDto entity)
         {
@@ -91,12 +93,12 @@ namespace Business.Implements
         public async Task Update(PersonDto entity)
         {
             Person person = await this.data.GetById(entity.Id);
+            person.UpdateAt = DateTime.Now.AddHours(-5);
             if (person == null)
             {
                 throw new Exception("Registro no encontrado");
             }
             person = this.mapearDatos(person,entity);
-
             await this.data.Update(person);
         }
         

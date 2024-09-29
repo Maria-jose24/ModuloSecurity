@@ -17,34 +17,32 @@ namespace Data.Implements
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id, bool isSoftDelete = true)
+        public async Task Delete(int Id)
         {
-            var entity = await GetById(id);
+            var entity = await GetById(Id);
             if (entity == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
 
-            if (isSoftDelete)
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Citys.Remove(entity);
+            await context.SaveChangesAsync();
+        }
+
+        // Método para eliminar un registro de City
+        public async Task LogicalDelete(int Id)
+        {
+            var entity = await GetById(Id);
+            if (entity == null)
             {
-                // Si ya está eliminado, restaurarlo
-                if (entity.DeleteAt != null)
-                {
-                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
-                }
-                else
-                {
-                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
-                }
-
-                context.Citys.Update(entity);
-            }
-            else
-            {
-                // Borrado físico
-                context.Citys.Remove(entity);
+                throw new Exception("Registro NO encontrado");
             }
 
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Citys.Update(entity);
             await context.SaveChangesAsync();
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
@@ -53,14 +51,15 @@ namespace Data.Implements
                 Id,
                 CONCAT(Name, '-', Postalcode) AS TextoMostrar
                 FROM
-                Citys
+                citys
                 WHERE DeletedAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
+
         public async Task<City> GetById(int id)
         {
-            var sql = @"SELECT * FROM Citys WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
+            var sql = @"SELECT * FROM citys WHERE Id = @Id AND DeleteAt ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<City>(sql, new { Id = id });
         }
         public async Task<City> Save(City entity)
@@ -75,22 +74,16 @@ namespace Data.Implements
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await context.SaveChangesAsync();
         }
-
-
         public async Task<City> GetByName(string name)
         {
             return await this.context.Citys.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<City>> GetAll()
+        public async Task<IEnumerable<CityDto>> GetAll()
         {
-            var sql = @"
-                        SELECT c.*, s.Name AS State 
-                        FROM Citys c 
-                        INNER JOIN States s ON c.StateId = s.Id
-                        WHERE c.DeleteAt IS NULL 
-                        ORDER BY c.Id ASC";
-
-            return await this.context.QueryAsync<City>(sql);
+            var sql = @"SELECT c.*, s.Name As StateName FROM citys c
+            INNER JOIN states s ON c.StateId = s.Id Order BY Id ASC";
+            var citys = await this.context.QueryAsync<CityDto>(sql);
+            return citys;
         }
     }
 }

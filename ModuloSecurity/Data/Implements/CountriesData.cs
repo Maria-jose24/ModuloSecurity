@@ -17,34 +17,30 @@ namespace Data.Implements
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id, bool isSoftDelete = true)
+        // Método para eliminar un registro
+        public async Task Delete(int Id)
+        {
+            var entity = await GetById(Id);
+            if (entity == null)
+            {
+                throw new Exception("Registro NO encontrado");
+            }
+
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.Countries.Remove(entity);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task LogicalDelete(int id)
         {
             var entity = await GetById(id);
             if (entity == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
-
-            if (isSoftDelete)
-            {
-                // Si ya está eliminado, restaurarlo
-                if (entity.DeleteAt != null)
-                {
-                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
-                }
-                else
-                {
-                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
-                }
-
-                context.Countries.Update(entity);
-            }
-            else
-            {
-                // Borrado físico
-                context.Countries.Remove(entity);
-            }
-
+            entity.DeleteAt = DateTime.Now;
+            context.Countries.Update(entity);
             await context.SaveChangesAsync();
         }
 
@@ -52,7 +48,7 @@ namespace Data.Implements
         {
             var sql = @"SELECT
                 Id,
-                CONCAT(Name, '-',) AS TextoMostrar
+                CONCAT(Name) AS TextoMostrar
                 FROM
                 Countries
                 WHERE DeletedAt IS NULL
@@ -62,11 +58,20 @@ namespace Data.Implements
         }
         public async Task<Countries> GetById(int id)
         {
-            var sql = @"SELECT * FROM Countries WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
-            return await this.context.QueryFirstOrDefaultAsync<Countries>(sql, new { Id = id });
+            try
+            {
+                var sql = @"SELECT * FROM Countries WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
+                Countries countries = await this.context.QueryFirstOrDefaulAsync<Countries>(sql, new { Id = id });
+                return countries;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public async Task<Countries> Save(Countries entity)
         {
+            entity.UpdateAt = DateTime.Now;
             context.Countries.Add(entity);
             await context.SaveChangesAsync();
             return entity;
@@ -81,11 +86,12 @@ namespace Data.Implements
         {
             return await this.context.Countries.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<Countries>> GetAll()
+       
+        public async Task<IEnumerable<CountriesDto>> GetAll()
         {
             var sql = @"SELECT * FROM Countries ORDER BY Id ASC";
-            return await this.context.QueryAsync<Countries>(sql);
+            return await this.context.QueryAsync<CountriesDto>(sql);
         }
+
     }
 }
-

@@ -17,9 +17,13 @@ namespace Business.Implements
         {
             await this.data.Delete(id);
         }
+        public async Task LogicalDelete(int id)
+        {
+            await this.data.LogicalDelete(id);
+        }
         public async Task<IEnumerable<RoleDto>>GetAll()
         {
-            IEnumerable<Role> roles = await this.data.GetAll();
+            IEnumerable<Role> roles = (IEnumerable<Role>)await this.data.GetAll();
             var roleDtos = roles.Select(role => new RoleDto
             {
                 Id = role.Id,
@@ -55,16 +59,18 @@ namespace Business.Implements
         }
         public async Task<Role>Save(RoleDto entity)
         {
-            Role role = new Role();
-            role.CreateAt = DateTime.Now.AddHours(-5);
+            Role role = new Role
+            {
+                CreateAt = DateTime.Now.AddHours(-5)
+            };
             role = this.mapearDatos(role, entity);
-
             return await this.data.Save(role);
 
         }
         public async Task Update(RoleDto entity)
         {
             Role role = await this.data.GetById(entity.Id);
+            role.UpdateAt = DateTime.Now.AddHours(-5);
             if (role == null)
             {
                 throw new Exception("Registro no encontrado");

@@ -12,43 +12,36 @@ namespace Data.Implements
     {
         private readonly ApplicationDBContext context;
         protected readonly IConfiguration configuration;
-
         public RoleViewData(ApplicationDBContext context, IConfiguration configuration)
         {
             this.context = context;
             this.configuration = configuration;
         }
-        public async Task Delete(int id, bool isSoftDelete = true)
+        public async Task Delete(int Id)
         {
-            var entity = await GetById(id);
+            var entity = await GetById(Id);
             if (entity == null)
             {
-                throw new Exception("Registro no encontrado");
+                throw new Exception("Registro NO encontrado");
             }
-
-            if (isSoftDelete)
-            {
-                // Si ya está eliminado, restaurarlo
-                if (entity.DeleteAt != null)
-                {
-                    entity.DeleteAt = null; // Restaurar si ya había sido eliminado lógicamente
-                }
-                else
-                {
-                    entity.DeleteAt = DateTime.Now; // Eliminar lógicamente
-                }
-
-                context.RoleViews.Update(entity);
-            }
-            else
-            {
-                // Borrado físico
-                context.RoleViews.Remove(entity);
-            }
-
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.RoleViews.Remove(entity);
             await context.SaveChangesAsync();
         }
-
+        // Método para eliminar un registro de ViewRol
+        public async Task LogicalDelete(int Id)
+        {
+            var entity = await GetById(Id);
+            if (entity == null)
+            {
+                throw new Exception("Registro NO encontrado");
+            }
+            // Corregido: Asignación correcta de la propiedad DeleteAt
+            entity.DeleteAt = DateTime.Today;
+            context.RoleViews.Update(entity);
+            await context.SaveChangesAsync();
+        }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             var sql = @"SELECT
@@ -59,7 +52,6 @@ namespace Data.Implements
                 WHERE DeleteAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
-
         }
         public async Task<RoleView> GetById(int id)
         {
@@ -81,11 +73,17 @@ namespace Data.Implements
         {
             return await this.context.RoleViews.AsNoTracking().Where(item => item.Id == id).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<RoleView>> GetAll()
+        public async Task<IEnumerable<RoleViewDto>> GetAll()
         {
-            var sql = @"SELECT * FROM RoleViews ORDER BY Id ASC";
-            return await this.context.QueryAsync<RoleView>(sql);
+            var sql = @"
+                SELECT rv.*, r.Name AS RoleName, v.Name AS ViewName
+                FROM RoleViews rv
+                INNER JOIN Roles r ON rv.RoleId = r.Id
+                INNER JOIN Views v ON rv.ViewId = v.Id
+                WHERE rv.DeleteAt IS NULL
+                ORDER BY rv.Id ASC";
+            var roleViews = await this.context.QueryAsync<RoleViewDto>(sql);
+            return roleViews;
         }
-
     }
 }

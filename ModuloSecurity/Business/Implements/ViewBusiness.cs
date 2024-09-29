@@ -17,9 +17,13 @@ namespace Business.Implements
         {
             await this.data.Delete(id);
         }
+        public async Task LogicalDelete(int id)
+        {
+            await this.data.LogicalDelete(id);
+        }
         public async Task<IEnumerable<ViewDto>>GetAll()
         {
-            IEnumerable<View> views = await this.data.GetAll();
+            IEnumerable<View> views = (IEnumerable<View>)await this.data.GetAll();
             var viewDtos = views.Select(view => new ViewDto
             {
                 Id = view.Id,
@@ -54,15 +58,17 @@ namespace Business.Implements
         }
         public async Task<View>Save(ViewDto entity)
         {
-            View view = new View();
-            view.CreateAt = DateTime.Now.AddHours(-5);
+            View view = new View
+            {
+                CreateAt = DateTime.Now.AddHours(-5)
+            };
             view = this.mapearDatos(view, entity);
-
             return await this.data.Save(view);
         }
         public async Task Update(ViewDto entity)
         {
             View view = await this.data.GetById(entity.Id);
+            view.UpdateAt = DateTime.Now.AddHours(-5);
             if (view == null)
             {
                 throw new Exception("Registro no encontrado");
