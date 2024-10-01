@@ -1,4 +1,6 @@
-﻿namespace Entity.DTO
+﻿using Org.BouncyCastle.Bcpg;
+
+namespace Entity.DTO
 {
     public class UserRoleDto
     {

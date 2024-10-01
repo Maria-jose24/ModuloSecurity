@@ -76,12 +76,10 @@ namespace Data.Implements
         public async Task<IEnumerable<RoleViewDto>> GetAll()
         {
             var sql = @"
-                SELECT rv.*, r.Name AS RoleName, v.Name AS ViewName
-                FROM RoleViews rv
-                INNER JOIN Roles r ON rv.RoleId = r.Id
-                INNER JOIN Views v ON rv.ViewId = v.Id
-                WHERE rv.DeleteAt IS NULL
-                ORDER BY rv.Id ASC";
+                SELECT rv.*, v.Name AS ViewName, r.Name AS RoleName
+                FROM roleviews rv INNER JOIN v ON rv.ViewId = v.Id
+                INNER JOIN r ON rv.RoleId = r.Id
+                Order BY Id ASC";
             var roleViews = await this.context.QueryAsync<RoleViewDto>(sql);
             return roleViews;
         }

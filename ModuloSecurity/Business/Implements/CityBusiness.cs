@@ -34,7 +34,6 @@ namespace Business.Implements
                 StateName = city.State?.Name
 
             });
-            
             return cityDtos;
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()

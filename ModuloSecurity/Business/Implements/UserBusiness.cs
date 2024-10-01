@@ -30,7 +30,8 @@ namespace Business.Implements
                 Username = user.Username,
                 Password = user.Password,
                 State = user.State,
-                PersonEmail = user.Person?.Email
+                PersonId = user.PersonId,
+                PersonName = user.Person?.First_name
             });
             return userDtos;
         }
@@ -47,6 +48,7 @@ namespace Business.Implements
             userDto.Username = user.Username;
             userDto.Password = user.Password;
             userDto.State = user.State;
+            userDto.PersonId = user.PersonId;
             return userDto;
         }
         public User mapearDatos(User user, UserDto entity)
@@ -55,6 +57,7 @@ namespace Business.Implements
             user.Username = entity.Username;
             user.Password = entity.Password;
             user.State = entity.State;
+            user.PersonId = entity.PersonId;
             return user;
         }
         public async Task<User>Save(UserDto entity)

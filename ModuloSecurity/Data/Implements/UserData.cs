@@ -48,26 +48,18 @@ namespace Data.Implements
         {
             var sql = @"SELECT
                 Id,
-                CONCAT(Name, '-', Description) AS TextoMostrar
+                CONCAT(Name) AS TextoMostrar
                 FROM
-                users
-                WHERE DeletedAt IS NULL AND State = 1
+                User
+                WHERE DeleteAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
         public async Task<IEnumerable<UserDto>> GetAll()
         {
-            var sql = @"SELECT
-                       us.Id,
-                       us.Username,
-                       us.Password
-                       us.State
-                       us.PersonId,
-                       per.first_name AS NamePerson
-
-                       FROM users AS us
-                       INNER JOIN persons AS per ON per.Id = us.PersonId
-                       WHERE IS NULL(us.DeleteAt)";
+            var sql = @"
+                        SELECT u.*, p.Name As PersonName FROM users p INNER JOIN 
+                        Persons p ON u.PersonId = p.Id ORDER BY Id ASC";
             return await this.context.QueryAsync<UserDto>(sql);
         }
         public async Task<User> GetById(int id)

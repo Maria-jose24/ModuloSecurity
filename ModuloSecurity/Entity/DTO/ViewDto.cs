@@ -9,5 +9,9 @@
         public string Description { get; set; }
 
         public bool State { get; set; }
+
+        public int ModuloId { get; set; }
+
+
     }
 }

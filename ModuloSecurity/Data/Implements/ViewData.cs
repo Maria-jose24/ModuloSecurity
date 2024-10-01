@@ -57,18 +57,13 @@ namespace Data.Implements
         }
         public async Task<IEnumerable<ViewDto>> GetAll()
         {
-            var sql = @"SELECT
-                vi.Id,
-                vi.Name,
-                vi.Description,
-                vi.State,
-                vi.ModuloId,
-                mo.Description AS DescriptionModulo
-
-                FROM views AS vi
-                INNERR JOIN modulos AS mo ON mo.Id = vi.ModuloId
-                WHERE IS NULL(vi.DeleteAt)";
-            return await this.context.QueryAsync<ViewDto>(sql);
+            var sql = @"
+                SELECT v.*, FROM views v INNER JOIN modulos m ON  v.Name AS ViewName, r.Name AS RoleName
+                FROM roleviews rv INNER JOIN v ON rv.ViewId = v.Id
+                INNER JOIN r ON rv.RoleId = r.Id
+                Order BY Id ASC";
+            var Views = await this.context.QueryAsync<RoleViewDto>(sql);
+            return Views;
         }
         public async Task<View> GetById(int id)
         { 

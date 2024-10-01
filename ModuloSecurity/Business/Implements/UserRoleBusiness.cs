@@ -28,6 +28,8 @@ namespace Business.Implements
             {
                 Id = userRole.Id,
                 State = userRole.State,
+                UserId = userRole.UserId,
+                UserName = userRole.User?.Username
             });
             return userRoleDtos;
         }
@@ -42,6 +44,8 @@ namespace Business.Implements
 
             userRoleDto.Id = userRole.Id;
             userRoleDto.State = userRole.State;
+            userRoleDto.UserId = userRole.UserId;
+            userRoleDto.UserName = userRole.UserName;
             return userRoleDto;
         }
         public UserRole mapearDatos(UserRole userRole, UserRoleDto entity)

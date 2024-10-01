@@ -9,6 +9,8 @@
         public string Password { get; set; }
 
         public bool State { get; set; }
-        public string PersonEmail { get; set; }
+        public int PersonId { get; set; }
+
+        public string? PersonName { get; set; }
     }
 }

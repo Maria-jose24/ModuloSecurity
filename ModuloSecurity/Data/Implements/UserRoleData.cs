@@ -51,25 +51,21 @@ namespace Data.Implements
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
                 userroles
-                WHERE DeletedAt IS NULL AND State = 1
+                WHERE DeletedAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
-        public async Task<IEnumerable<UserRoleDto>> GetAll()
-        {
-            var sql = @"SELECT
-                      ur.Id,
-                      ur.State,
-                      ur.UserId,
-                      ur.RoleId,
-                      us.Username AS NameUser,
-                      ro.Name AS NameRole
-                      FROM userroles AS ur
-                      INNER JOIN users AS us ON us.Id = ur.UserId
-                      INNER JOIN roles AS ro ON ro.Id = ur.RoleId
-                      WHERE IS NULL(ur.DeleteAt)";
-            return await this.context.QueryAsync<UserRoleDto>(sql);
-        }
+        public async Task<IEnumerable<CityDto>> GetAll()
+            {
+                var sql = @"SELECT ur.*, u.Name As UserName, r.Name AS RoleName,
+                FROM userRoles ur
+                INNER JOIN user u ON ur.UserId = u.Id
+                INNER JOIN roles r ON ur.RoleId = r.Id
+                Order BY Id ASC";
+                var citys = await this.context.QueryAsync<CityDto>(sql);
+                return citys;
+            }
+        
         public async Task<UserRole> GetById(int id)
         {
             var sql = @"SELECT * FROM userroles WHERE Id = @Id ORDER BY Id ASC";

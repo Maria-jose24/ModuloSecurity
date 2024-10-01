@@ -30,6 +30,7 @@ namespace Business.Implements
                 Name = view.Name,
                 Description = view.Description,
                 State = view.State,
+                ModuloId = view.ModuloId,
             });
             return viewDtos;
         }
@@ -46,6 +47,8 @@ namespace Business.Implements
             viewDto.Name = view.Name;
             viewDto.Description = view.Description;
             viewDto.State = view.State;
+            viewDto.ModuloId = view.ModuloId;
+
             return viewDto;
         }
         public View mapearDatos(View view, ViewDto entity)
@@ -54,6 +57,7 @@ namespace Business.Implements
             view.Name = entity.Name;
             view.Description = entity.Description;
             view.State = entity.State;
+            view.ModuloId = entity.ModuloId;
             return view;
         }
         public async Task<View>Save(ViewDto entity)
