@@ -24,17 +24,16 @@ namespace Business.Implements
 
         public async Task<IEnumerable<CityDto>> GetAll()
         {
-            IEnumerable<City> citys = (IEnumerable<City>) await this.data.GetAll();
-            var cityDtos = citys.Select(city => new CityDto
-            {
-                Id = city.Id,
-                Name = city.Name,
-                Postalcode = city.Postalcode,
-                StateId = city.StateId,
-                StateName = city.State?.Name
+            IEnumerable<CityDto> citys = await this.data.GetAll();
+            /*var cityDtos = citys.Select(city => new CityDto
+              Id = city.Id,
+               Name = city.Name,
+               Postalcode = city.Postalcode,
+               StateId = city.StateId,
+               StateName = city.State?.Name
 
-            });
-            return cityDtos;
+           });*/
+            return citys;
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {

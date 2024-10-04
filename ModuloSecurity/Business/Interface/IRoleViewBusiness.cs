@@ -5,11 +5,12 @@ namespace Business.Interface
 {
     public interface IRoleViewBusiness
     {
-        Task Delete(int id);
-        Task LogicalDelete(int id);
-        Task<RoleViewDto> GetById(int id);
-        Task<IEnumerable<RoleViewDto>> GetAll();
-        Task<RoleView> Save(RoleViewDto entity);
-        Task Update(RoleViewDto entity);
+        public Task Delete(int id);
+        public Task LogicalDelete(int id);
+        public Task<RoleViewDto> GetById(int id);
+        public Task<IEnumerable<RoleViewDto>> GetAll();
+        public Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        public Task<RoleView> Save(RoleViewDto entity);
+        public Task Update(RoleViewDto entity);
     }
 }

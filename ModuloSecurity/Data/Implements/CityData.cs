@@ -24,7 +24,6 @@ namespace Data.Implements
             {
                 throw new Exception("Registro NO encontrado");
             }
-
             // Corregido: Asignación correcta de la propiedad DeleteAt
             entity.DeleteAt = DateTime.Today;
             context.Citys.Remove(entity);

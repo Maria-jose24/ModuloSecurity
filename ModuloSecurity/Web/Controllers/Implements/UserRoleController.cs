@@ -2,6 +2,7 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
@@ -9,7 +10,7 @@ namespace Web.Controllers.Implements
     [ApiController]
     [Route("[controller]")]
 
-    public class UserRoleController : ControllerBase
+    public class UserRoleController : ControllerBase, IUserRoleController
     {
         private readonly IUserRoleBusiness _userRoleBusiness;
 
@@ -35,7 +36,7 @@ namespace Web.Controllers.Implements
             return Ok(result);
         }
         [HttpPost]
-        public async Task<ActionResult<UserRole>> Save([FromBody] UserRoleDto entity)
+        public async Task<ActionResult<UserRoleDto>> Save([FromBody] UserRoleDto entity)
         {
             if (entity == null)
             {
@@ -58,6 +59,12 @@ namespace Web.Controllers.Implements
         public async Task<IActionResult> Delete(int id)
         {
             await _userRoleBusiness.Delete(id);
+            return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _userRoleBusiness.LogicalDelete(id);
             return NoContent();
         }
     }

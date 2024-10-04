@@ -23,14 +23,14 @@ namespace Business.Implements
         }
         public async Task<IEnumerable<ModuloDto>>GetAll()
         {
-            IEnumerable<Modulo> modulos = (IEnumerable<Modulo>)await this.data.GetAll();
-            var moduloDtos = modulos.Select(modulo => new ModuloDto
+            IEnumerable<ModuloDto> modulos = await this.data.GetAll();
+            /*var moduloDtos = modulos.Select(modulo => new ModuloDto
             {
                 Id = modulo.Id,
                 Description = modulo.Description,
                 State = modulo.State
-            });
-            return moduloDtos;
+            });*/
+            return modulos;
         }
         public async Task<IEnumerable<DataSelectDto>>GetAllSelect()
         {

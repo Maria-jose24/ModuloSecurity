@@ -2,13 +2,14 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")]
 
-    public class UserController : ControllerBase
+    public class UserController : ControllerBase, IUserController
     {
         private readonly IUserBusiness _userBusiness;
 
@@ -58,6 +59,17 @@ namespace Web.Controllers.Implements
         {
             await _userBusiness.Delete(id);
             return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _userBusiness.LogicalDelete(id);
+            return NoContent();
+        }
+
+        Task<ActionResult<UserDto>> IUserController.Save(UserDto userDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

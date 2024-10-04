@@ -6,9 +6,10 @@ namespace Web.Controllers.Interfaces
 {
     public interface IViewController
     {
-        Task<ActionResult<IEnumerable<ViewDto>>> GetAll();
-        Task<IActionResult> Delete(int id);
-        Task<ActionResult<View>> Save([FromBody] ViewDto viewDto);
-        Task<IActionResult> Update([FromBody] ViewDto viewDto);
+        public Task<ActionResult<IEnumerable<ViewDto>>> GetAll();
+        public Task<IActionResult> Delete(int id);
+        public Task<IActionResult> LogicalDelete(int id);
+        public Task<ActionResult<ViewDto>> Save([FromBody] ViewDto viewDto);
+        public Task<IActionResult> Update([FromBody] ViewDto viewDto);
     }
 }

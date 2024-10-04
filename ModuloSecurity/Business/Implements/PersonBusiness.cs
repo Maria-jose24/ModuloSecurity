@@ -23,8 +23,8 @@ namespace Business.Implements
         }
         public async Task<IEnumerable<PersonDto>> GetAll()
         {
-            IEnumerable<Person> persons =(IEnumerable<Person>) await this.data.GetAll();
-            var personDtos = persons.Select(person => new PersonDto
+            IEnumerable<PersonDto> persons = await this.data.GetAll();
+            /*var personDtos = persons.Select(person => new PersonDto
             {
                 Id = person.Id,
                 First_name = person.First_name,
@@ -38,8 +38,8 @@ namespace Business.Implements
                 State = person.State,
                 CityId = person.CityId,
                 CityName = person.City?.Name
-            });
-            return personDtos;
+            });*/
+            return persons;
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {

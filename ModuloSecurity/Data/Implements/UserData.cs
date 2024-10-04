@@ -64,7 +64,7 @@ namespace Data.Implements
         }
         public async Task<User> GetById(int id)
         {
-            var sql = @"SELECT * FROM users WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM User WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<User>(sql, new { Id = id });
         }
         public async Task<User> Save(User entity)

@@ -21,17 +21,17 @@ namespace Business.Implements
         {
             await this.data.LogicalDelete(id);
         }
-        public async Task<IEnumerable<RoleDto>>GetAll()
-        {
-            IEnumerable<Role> roles = (IEnumerable<Role>)await this.data.GetAll();
-            var roleDtos = roles.Select(role => new RoleDto
+        public async Task<IEnumerable<RoleDto>> GetAll()
             {
-                Id = role.Id,
-                Name = role.Name,
-                Description = role.Description,
-                State = role.State,
+              IEnumerable<Role> roles = await this.data.GetAll();
+              var roleDtos = roles.Select(role => new RoleDto
+                {
+                 Id = role.Id,
+                 Name = role.Name,
+                 Description = role.Description,
+                 State = role.State,
 
-            });
+                 });
             return roleDtos;
         }
         public async Task<IEnumerable<DataSelectDto>>GetAllSelect()

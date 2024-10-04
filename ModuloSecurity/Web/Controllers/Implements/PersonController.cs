@@ -2,22 +2,21 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")] 
 
-    public class PersonController : ControllerBase
+    public class PersonController : ControllerBase, IPersonController
     {
         private readonly IPersonBusiness _personBusiness;
-        private readonly ICityBusiness _cityBusiness;
 
-        public PersonController(IPersonBusiness personBusiness, ICityBusiness cityBusiness)
+        public PersonController(IPersonBusiness personBusiness)
         {
 
             _personBusiness = personBusiness;
-            _cityBusiness = cityBusiness;
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PersonDto>>> GetAll()
@@ -50,26 +49,27 @@ namespace Web.Controllers.Implements
         {
             if (entity == null || entity.Id == 0)
             {
-                return BadRequest("Datos inválidos");
+                return BadRequest();
             }
-            var existingPerson = await _personBusiness.GetById(entity.Id);
-            if (existingPerson == null)
-            {
-                return NotFound("La persona no fue encontrada.");
-            }
-            await _personBusiness.Update(entity);
+             await _personBusiness.Update(entity);
             return NoContent();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var existingPerson = await _personBusiness.GetById(id);
-            if ( existingPerson == null )
-            {
-                return NotFound("La persona no fue encontrada.");
-            }
             await _personBusiness.Delete(id);
             return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _personBusiness.LogicalDelete(id);
+            return NoContent();
+        }
+
+        Task<ActionResult<PersonDto>> IPersonController.Save(PersonDto personDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

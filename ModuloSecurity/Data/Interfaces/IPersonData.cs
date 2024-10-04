@@ -8,13 +8,9 @@ namespace Data.Interfaces
         public Task Delete(int id);
         public Task LogicalDelete(int id);
         public Task<Person> GetById(int id);
-
-        public Task<Person> Save(Person entity);
-
-        public Task Update(Person entity);
-
+        public Task<Person> Save(Person Person);
+        public Task Update(Person Person);
         public Task<IEnumerable<PersonDto>> GetAll();
-
-        Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        public Task<IEnumerable<DataSelectDto>> GetAllSelect();
     }
 }

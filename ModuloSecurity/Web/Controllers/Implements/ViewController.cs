@@ -2,6 +2,7 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
@@ -9,7 +10,7 @@ namespace Web.Controllers.Implements
     [ApiController]
     [Route("[controller]")]
 
-    public class ViewController : ControllerBase
+    public class ViewController : ControllerBase, IViewController
     {
         private readonly IViewBusiness _viewBusiness;
 
@@ -35,7 +36,7 @@ namespace Web.Controllers.Implements
             return Ok(result);
         }
         [HttpPost]
-        public async Task<ActionResult<View>> Save([FromBody] ViewDto entity)
+        public async Task<ActionResult<ViewDto>> Save([FromBody] ViewDto entity)
         {
             if (entity == null)
             {
@@ -58,6 +59,12 @@ namespace Web.Controllers.Implements
         public async Task<IActionResult> Delete(int id)
         {
             await _viewBusiness.Delete(id);
+            return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _viewBusiness.LogicalDelete(id);
             return NoContent();
         }
     }

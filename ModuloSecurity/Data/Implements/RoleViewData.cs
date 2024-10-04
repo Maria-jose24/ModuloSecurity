@@ -55,7 +55,7 @@ namespace Data.Implements
         }
         public async Task<RoleView> GetById(int id)
         {
-            var sql = @"SELECT * FROM RoleViews WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
+            var sql = @"SELECT * FROM RoleView WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<RoleView>(sql, new { Id = id });
         }
         public async Task<RoleView> Save(RoleView entity)

@@ -2,12 +2,13 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")]
-    public class CountriesController : ControllerBase
+    public class CountriesController : ControllerBase, ICountriesController
     {
         private readonly ICountriesBusiness _countriesBusiness;
 
@@ -23,14 +24,14 @@ namespace Web.Controllers.Implements
             return Ok(result);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<ActionResult<CountriesDto>> GetById(int id)
         {
-            var country = await _countriesBusiness.GetById(id);
-            if (country == null)
+            var result = await _countriesBusiness.GetById(id);
+            if (result == null)
             {
-                return NotFound(new {Message = $"Country with ID {id} not found."});
+                return NotFound();
             }
-            return Ok(country);
+            return Ok(result);
         }
         [HttpPost]
         public async Task<ActionResult<Countries>> Save([FromBody] CountriesDto entity)
@@ -57,6 +58,16 @@ namespace Web.Controllers.Implements
         {
             await _countriesBusiness.Delete(id);
             return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _countriesBusiness.LogicalDelete(id);
+            return NoContent(); // Retorna 204 No Content si la operación es exitosa 
+        }
+        Task<ActionResult<CountriesDto>> ICountriesController.Save(CountriesDto countriesDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

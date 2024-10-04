@@ -5,11 +5,12 @@ namespace Business.Interface
 {
     public interface ICountriesBusiness
     {
-        Task Delete(int id);
-        Task LogicalDelete(int id);
-        Task<IEnumerable<CountriesDto>> GetAll();
-        Task<CountriesDto> GetById(int id);
-        Task<Countries> Save(CountriesDto entity);
-        Task Update(CountriesDto entity);
+        public Task Delete(int id);
+        public Task LogicalDelete(int id);
+        public Task<IEnumerable<CountriesDto>> GetAll();
+        public Task<CountriesDto> GetById(int id);
+        public Task<Countries> Save(CountriesDto entity);
+        public Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        public Task Update(CountriesDto entity);
     }
 }

@@ -6,9 +6,10 @@ namespace Web.Controllers.Interfaces
 {
     public interface IRoleViewController
     {
-        Task<ActionResult<IEnumerable<RoleViewDto>>> GetAll();
-        Task<ActionResult<RoleView>> Save([FromBody] RoleViewDto roleViewDto);
-        Task<IActionResult> Delete(int id);
-        Task<IActionResult> Update([FromBody] RoleViewDto roleViewDto);
+        public Task<ActionResult<IEnumerable<RoleViewDto>>> GetAll();
+        public Task<ActionResult<RoleViewDto>> Save([FromBody] RoleViewDto roleViewDto);
+        public Task<IActionResult> Delete(int id);
+        public Task<IActionResult> LogicalDelete(int id);
+        public Task<IActionResult> Update([FromBody] RoleViewDto roleViewDto);
     }
 }

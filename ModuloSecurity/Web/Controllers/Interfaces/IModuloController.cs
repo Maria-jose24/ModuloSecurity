@@ -6,9 +6,11 @@ namespace Web.Controllers.Interfaces
 {
     public interface IModuloController
     {
-        Task<ActionResult<IEnumerable<ModuloDto>>> GetAll();
-        Task<ActionResult<Modulo>> Save([FromBody] ModuloDto moduloDto);
-        Task<IActionResult>Delete(int id);
-        Task<IActionResult> Update([FromBody]ModuloDto moduloDto);
+        public Task<ActionResult<IEnumerable<ModuloDto>>> GetAll();
+        public Task<ActionResult<ModuloDto>> GetById(int id);
+        public Task<ActionResult<ModuloDto>> Save([FromBody] ModuloDto moduloDto);
+        public Task<IActionResult>Delete(int id);
+        public Task<IActionResult> LogicalDelete(int id);
+        public Task<IActionResult> Update([FromBody]ModuloDto moduloDto);
     }
 }

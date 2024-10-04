@@ -23,15 +23,15 @@ namespace Business.Implements
         }
         public async Task<IEnumerable<UserRoleDto>>GetAll()
         {
-            IEnumerable<UserRole> userRoles =(IEnumerable<UserRole>) await this.data.GetAll();
-            var userRoleDtos = userRoles.Select(userRole => new UserRoleDto
+            IEnumerable<UserRoleDto> userRoles = await this.data.GetAll();
+            /*var userRoleDtos = userRoles.Select(userRole => new UserRoleDto
             {
                 Id = userRole.Id,
                 State = userRole.State,
                 UserId = userRole.UserId,
                 UserName = userRole.User?.Username
-            });
-            return userRoleDtos;
+            });*/
+            return userRoles;
         }
         public async Task<IEnumerable<DataSelectDto>>GetAllSelect()
         {
@@ -43,14 +43,16 @@ namespace Business.Implements
             UserRoleDto userRoleDto = new UserRoleDto();
 
             userRoleDto.Id = userRole.Id;
+            userRoleDto.RoleId = userRole.RoleId;
             userRoleDto.State = userRole.State;
             userRoleDto.UserId = userRole.UserId;
-            userRoleDto.UserName = userRole.UserName;
             return userRoleDto;
         }
         public UserRole mapearDatos(UserRole userRole, UserRoleDto entity)
         {
             userRole.Id = entity.Id;
+            userRole.RoleId = entity.RoleId;
+            userRole.UserId = entity.UserId;
             userRole.State = entity.State;
             return userRole;
         }

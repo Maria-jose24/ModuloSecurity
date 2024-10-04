@@ -50,25 +50,23 @@ namespace Data.Implements
                 Id,
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
-                userroles
+                UserRole
                 WHERE DeletedAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
-        public async Task<IEnumerable<CityDto>> GetAll()
+        public async Task<IEnumerable<UserRole>> GetAll()
             {
-                var sql = @"SELECT ur.*, u.Name As UserName, r.Name AS RoleName,
-                FROM userRoles ur
-                INNER JOIN user u ON ur.UserId = u.Id
-                INNER JOIN roles r ON ur.RoleId = r.Id
-                Order BY Id ASC";
-                var citys = await this.context.QueryAsync<CityDto>(sql);
-                return citys;
+                var sql = @"SELECT ur.Id, ur.State, u.Id AS UserId, u.Username, r.Id AS RoleId, r.Name AS RoleName
+                        FROM UserRoles ur JOIN User u ON ur.UserId = u.Id
+                                          JOIN Role r ON ur.RoleId = r.Id   Order BY ur.Id ASC";
+            var userRoles = await this.context.QueryAsync<UserRole>(sql);
+                return userRoles;
             }
         
         public async Task<UserRole> GetById(int id)
         {
-            var sql = @"SELECT * FROM userroles WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM UserRole WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<UserRole>(sql, new { Id = id });
         }
         public async Task<UserRole> Save(UserRole entity)

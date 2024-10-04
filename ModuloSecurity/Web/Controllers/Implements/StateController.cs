@@ -2,12 +2,13 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")]
-    public class StateController : ControllerBase
+    public class StateController : ControllerBase, IStateController
     {
         private readonly IStateBusiness _stateBusiness;
 
@@ -46,7 +47,7 @@ namespace Web.Controllers.Implements
         {
             if (entity == null || entity.Id == 0)
             {
-                return BadRequest("Datos inválidos");
+                return BadRequest();
             }
             await _stateBusiness.Update(entity);
             return NoContent();
@@ -56,6 +57,17 @@ namespace Web.Controllers.Implements
         {
             await _stateBusiness.Delete(id);
             return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _stateBusiness.LogicalDelete(id);
+            return NoContent();
+        }
+
+        Task<ActionResult<StateDto>> IStateController.Save(StateDto StateDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

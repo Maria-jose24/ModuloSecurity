@@ -10,8 +10,8 @@ namespace Data.Interfaces
         public Task<IEnumerable<StateDto>> GetAll();
         Task<IEnumerable<DataSelectDto>> GetAllSelect();
         public Task<State> GetById(int id);
-        public Task<State> Save(State entity);
-        public Task Update(State entity);
+        public Task<State> Save(State State);
+        public Task Update(State State);
         Task<State> GetByName(string name);
     }
 }

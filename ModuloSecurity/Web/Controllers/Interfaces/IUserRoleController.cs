@@ -6,9 +6,10 @@ namespace Web.Controllers.Interfaces
 {
     public interface IUserRoleController
     {
-        Task<IActionResult> Delete(int  id);
-        Task<ActionResult<UserRole>> Save([FromBody]UserRoleDto userRoleDto);
-        Task<IActionResult> Update([FromBody]UserRoleDto userRoleDto);
-        Task<ActionResult<IEnumerable<UserRole>>> GetAll();
+        public Task<IActionResult> Delete(int  id);
+        public Task<IActionResult> LogicalDelete(int id);
+        public Task<ActionResult<UserRoleDto>> Save([FromBody]UserRoleDto userRoleDto);
+        public Task<IActionResult> Update([FromBody]UserRoleDto userRoleDto);
+        public Task<ActionResult<IEnumerable<UserRoleDto>>> GetAll();
     }
 }

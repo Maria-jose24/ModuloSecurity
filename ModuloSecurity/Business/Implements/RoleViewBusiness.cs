@@ -22,15 +22,13 @@ namespace Business.Implements
         }
         public async Task<IEnumerable<RoleViewDto>> GetAll()
         {
-            IEnumerable<RoleView> roleViews =(IEnumerable<RoleView>) await this.data.GetAll();
+            IEnumerable<RoleView> roleViews = await this.data.GetAll();
             var roleViewDtos = roleViews.Select(roleView => new RoleViewDto
             {
                 Id = roleView.Id,
                 State = roleView.State,
                 RoleId = roleView.RoleId,
-                RoleName = roleView.Role?.Name,
                 ViewId = roleView.ViewId,
-                ViewName = roleView.View?.Name
             });
             return roleViewDtos;
         }

@@ -50,24 +50,20 @@ namespace Data.Implements
                 Id,
                 CONCAT(Name, '-', Description) AS TextoMostrar
                 FROM
-                views
-                WHERE DeletedAt IS NULL AND State = 1
+                View
+                WHERE DeletedAt IS NULL
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
-        public async Task<IEnumerable<ViewDto>> GetAll()
+        public async Task<IEnumerable<View>> GetAll()
         {
-            var sql = @"
-                SELECT v.*, FROM views v INNER JOIN modulos m ON  v.Name AS ViewName, r.Name AS RoleName
-                FROM roleviews rv INNER JOIN v ON rv.ViewId = v.Id
-                INNER JOIN r ON rv.RoleId = r.Id
-                Order BY Id ASC";
-            var Views = await this.context.QueryAsync<RoleViewDto>(sql);
-            return Views;
+            var sql = @"SELECT * FROM View Order BY Id ASC";
+            var views = await this.context.QueryAsync<View>(sql);
+            return views;
         }
         public async Task<View> GetById(int id)
         { 
-            var sql = @"SELECT * FROM views WHERE Id = @Id ORDER BY Id ASC";
+            var sql = @"SELECT * FROM View WHERE Id = @Id AND DeleteAt IS NULL ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<View>(sql, new { Id = id });
         }
         public async Task<View> Save(View entity)

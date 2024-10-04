@@ -5,11 +5,12 @@ namespace Business.Interface
 {
     public interface IRoleBusiness
     {
-        Task Delete(int id);
-        Task LogicalDelete(int id);
-        Task<RoleDto> GetById(int id);
-        Task<IEnumerable<RoleDto>> GetAll();
-        Task<Role> Save(RoleDto entity);
-        Task Update(RoleDto entity);
+        public Task Delete(int id);
+        public Task LogicalDelete(int id);
+        public Task<RoleDto> GetById(int id);
+        public Task<IEnumerable<RoleDto>> GetAll();
+        public Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        public Task<Role> Save(RoleDto entity);
+        public Task Update(RoleDto entity);
     }
 }

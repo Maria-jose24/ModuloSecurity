@@ -23,16 +23,15 @@ namespace Business.Implements
         }
         public async Task<IEnumerable<ViewDto>>GetAll()
         {
-            IEnumerable<View> views = (IEnumerable<View>)await this.data.GetAll();
-            var viewDtos = views.Select(view => new ViewDto
+            IEnumerable<ViewDto> views = await this.data.GetAll();
+            /*var viewDtos = views.Select(view => new ViewDto
             {
                 Id = view.Id,
                 Name = view.Name,
                 Description = view.Description,
                 State = view.State,
-                ModuloId = view.ModuloId,
-            });
-            return viewDtos;
+            });*/
+            return views;
         }
         public async Task<IEnumerable<DataSelectDto>>GetAllSelect()
         {
@@ -56,8 +55,8 @@ namespace Business.Implements
             view.Id = entity.Id;
             view.Name = entity.Name;
             view.Description = entity.Description;
-            view.State = entity.State;
             view.ModuloId = entity.ModuloId;
+            view.State = entity.State;
             return view;
         }
         public async Task<View>Save(ViewDto entity)

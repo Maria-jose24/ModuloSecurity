@@ -7,10 +7,10 @@ namespace Data.Interfaces
     {
         public Task Delete(int id);
         public Task LogicalDelete(int id); 
-        Task<Role> GetById(int id);
-        Task<Role> Save(Role entity);
-        Task Update(Role entity);
-        Task<IEnumerable<RoleDto>> GetAll();
-        Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        public Task<Role> GetById(int id);
+        public Task<Role> Save(Role Role);
+        public Task Update(Role Role);
+        public Task<IEnumerable<RoleDto>> GetAll();
+        public Task<IEnumerable<DataSelectDto>> GetAllSelect();
     }
 }

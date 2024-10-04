@@ -2,12 +2,13 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
     [ApiController]
     [Route("[controller]")]
-    public class CityController : ControllerBase
+    public class CityController : ControllerBase, ICityController
     {
         private readonly ICityBusiness _cityBusiness;
 
@@ -47,30 +48,28 @@ namespace Web.Controllers.Implements
         {
             if (entity == null || entity.Id == 0)
             {
-                return BadRequest("Datos inválidos");
+                return BadRequest();
             }
-
-            var existingCity = await _cityBusiness.GetById(entity.Id);
-            if (existingCity == null)
-            {
-                return NotFound("La ciudad no fue encontrada.");
-            }
-
             await _cityBusiness.Update(entity);
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _cityBusiness.Delete(id);
             return NoContent();
         }
 
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
         {
-            var existingCity = await _cityBusiness.GetById(id);
-            if (existingCity == null)
-            {
-                return NotFound("La ciudad no fue encontrada.");
-            }
-            await _cityBusiness.Delete(id);
+            await _cityBusiness.LogicalDelete(id);
             return NoContent();
+        }
+        Task<ActionResult<CityDto>> ICityController.Save(CityDto cityDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 namespace Web.Controllers.Implements
 {
@@ -9,7 +10,7 @@ namespace Web.Controllers.Implements
     [ApiController]
     [Route("[controller]")]
 
-    public class RoleViewController : ControllerBase
+    public class RoleViewController : ControllerBase, IRoleViewController
     {
         private readonly IRoleViewBusiness _roleViewBusiness;
 
@@ -59,6 +60,17 @@ namespace Web.Controllers.Implements
         {
             await _roleViewBusiness.Delete(id);
             return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _roleViewBusiness.LogicalDelete(id);
+            return NoContent();
+        }
+
+        Task<ActionResult<RoleViewDto>> IRoleViewController.Save(RoleViewDto roleViewDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

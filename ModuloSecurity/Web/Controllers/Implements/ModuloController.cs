@@ -1,7 +1,9 @@
-﻿using Business.Interface;
+﻿using Business.Implements;
+using Business.Interface;
 using Entity.DTO;
 using Entity.Model.Security;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers.Interfaces;
 
 
 namespace Web.Controllers.Implements
@@ -9,7 +11,7 @@ namespace Web.Controllers.Implements
     [ApiController]
     [Route("[controller]")]
 
-    public class ModuloController : ControllerBase
+    public class ModuloController : ControllerBase, IModuloController
     {
         private readonly IModuloBusiness _moduloBusiness;
 
@@ -59,6 +61,17 @@ namespace Web.Controllers.Implements
         {
             await _moduloBusiness.Delete(id);
             return NoContent();
+        }
+        [HttpDelete("logical/{id}")]
+        public async Task<IActionResult> LogicalDelete(int id)
+        {
+            await _moduloBusiness.LogicalDelete(id);
+            return NoContent();
+        }
+
+        Task<ActionResult<ModuloDto>> IModuloController.Save(ModuloDto moduloDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

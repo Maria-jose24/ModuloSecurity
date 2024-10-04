@@ -6,9 +6,11 @@ namespace Web.Controllers.Interfaces
 {
     public interface IPersonController
     {
-        Task<ActionResult<IEnumerable<PersonDto>>> GetAll();
-        Task<ActionResult<Person>> Save([FromBody] PersonDto person);
-        Task<IActionResult> Delete(int id);
-        Task<IActionResult> Update([FromBody] PersonDto personDto);
+        public Task<ActionResult<IEnumerable<PersonDto>>> GetAll();
+        public Task<ActionResult<PersonDto>> GetById(int id);
+        public Task<ActionResult<PersonDto>> Save([FromBody] PersonDto person);
+        public Task<IActionResult> Delete(int id);
+        public Task<IActionResult> LogicalDelete(int id);
+        public Task<IActionResult> Update([FromBody] PersonDto personDto);
     }
 }

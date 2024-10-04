@@ -10,8 +10,8 @@
 
         public bool State { get; set; }
 
+        public string ? Modulo { get; set; }
+
         public int ModuloId { get; set; }
-
-
     }
 }

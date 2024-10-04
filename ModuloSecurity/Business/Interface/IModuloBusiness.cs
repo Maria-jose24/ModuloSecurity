@@ -5,11 +5,12 @@ namespace Business.Interface
 {
     public interface IModuloBusiness
     {
-        Task Delete(int id);
-        Task LogicalDelete(int id);
-        Task<ModuloDto> GetById(int id);
-        Task<IEnumerable<ModuloDto>> GetAll();
-        Task<Modulo>Save(ModuloDto entity);
-        Task Update(ModuloDto entity);
+        public Task Delete(int id);
+        public Task LogicalDelete(int id);
+        public Task<ModuloDto> GetById(int id);
+        public Task<IEnumerable<ModuloDto>> GetAll();
+        public Task<Modulo>Save(ModuloDto entity);
+        public Task<IEnumerable<DataSelectDto>> GetAllSelect();
+        public Task Update(ModuloDto entity);
     }
 }

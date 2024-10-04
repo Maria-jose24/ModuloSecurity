@@ -2,6 +2,7 @@
 using Data.Interfaces;
 using Entity.DTO;
 using Entity.Model.Security;
+using System.Diagnostics.Metrics;
 
 namespace Business.Implements
 {
@@ -24,13 +25,13 @@ namespace Business.Implements
 
         public async Task<IEnumerable<CountriesDto>> GetAll()
         {
-            IEnumerable<Countries> countries = (IEnumerable<Countries>)await this.data.GetAll();
-            var countriesDto = countries.Select(countries => new CountriesDto
-            {
-                Id = countries.Id,
-                Name = countries.Name,
-            });
-            return countriesDto;
+           IEnumerable<CountriesDto> countries = await this.data.GetAll();
+            /*var countriesDto = countries.Select(countries => new CountriesDto
+           {
+               Id = countries.Id,
+               Name = countries.Name,
+           });*/
+            return countries;
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
@@ -38,34 +39,20 @@ namespace Business.Implements
         }
         public async Task<CountriesDto> GetById(int id)
         {
-            try
-            {
-                Countries countries = await this.data.GetById(id);
+            Countries country = await this.data.GetById(id);
+            CountriesDto countryDto = new CountriesDto();
 
-                if (countries == null)
-                {
-                    // Puedes retornar `null` o un objeto especial en lugar de lanzar una excepción
-                    return null; // O podrías retornar un DTO con un mensaje de error si prefieres
-                }
+            countryDto.Id = country.Id;
+            countryDto.Name = country.Name;
+            countryDto.State = country.State;
 
-                CountriesDto countriesDto = new CountriesDto
-                {
-                    Id = countries.Id,
-                    Name = countries.Name
-                };
-
-                return countriesDto;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return countryDto;
         }
         public Countries mapearDatos(Countries countries, CountriesDto entity)
         {
             countries.Id = entity.Id;
             countries.Name = entity.Name;
+            countries.State = entity.State;
             return countries;
         }
         public async Task<Countries> Save(CountriesDto entity)
