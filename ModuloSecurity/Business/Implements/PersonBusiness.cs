@@ -78,8 +78,6 @@ namespace Business.Implements
             person.CityId = entity.CityId;
             return person;
         }
-     
-        
         public async Task<Person>Save(PersonDto entity)
         {
             Person person = new Person

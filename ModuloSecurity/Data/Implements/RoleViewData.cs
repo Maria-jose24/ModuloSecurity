@@ -73,15 +73,14 @@ namespace Data.Implements
         {
             return await this.context.RoleViews.AsNoTracking().Where(item => item.Id == id).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<RoleViewDto>> GetAll()
+        public async Task<IEnumerable<RoleView>> GetAll()
         {
             var sql = @"
                 SELECT rv.*, v.Name AS ViewName, r.Name AS RoleName
                 FROM roleviews rv INNER JOIN v ON rv.ViewId = v.Id
                 INNER JOIN r ON rv.RoleId = r.Id
                 Order BY Id ASC";
-            var roleViews = await this.context.QueryAsync<RoleViewDto>(sql);
-            return roleViews;
+            return await context.QueryAsync<RoleView>(sql);
         }
     }
 }

@@ -8,7 +8,7 @@
 
         public int CountriesId { get; set; }
 
-        public int CountryId { get; set; }
+        public string ? Countries { get; set; }
 
     }
 }

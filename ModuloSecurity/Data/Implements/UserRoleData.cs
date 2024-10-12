@@ -55,13 +55,12 @@ namespace Data.Implements
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
-        public async Task<IEnumerable<UserRole>> GetAll()
+        public async Task<IEnumerable<UserRoleDto>> GetAll()
             {
                 var sql = @"SELECT ur.Id, ur.State, u.Id AS UserId, u.Username, r.Id AS RoleId, r.Name AS RoleName
                         FROM UserRoles ur JOIN User u ON ur.UserId = u.Id
                                           JOIN Role r ON ur.RoleId = r.Id   Order BY ur.Id ASC";
-            var userRoles = await this.context.QueryAsync<UserRole>(sql);
-                return userRoles;
+                return await context.QueryAsync<UserRoleDto>(sql);
             }
         
         public async Task<UserRole> GetById(int id)

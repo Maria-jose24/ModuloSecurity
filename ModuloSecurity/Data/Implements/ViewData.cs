@@ -55,11 +55,10 @@ namespace Data.Implements
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
         }
-        public async Task<IEnumerable<View>> GetAll()
+        public async Task<IEnumerable<ViewDto>> GetAll()
         {
             var sql = @"SELECT * FROM View Order BY Id ASC";
-            var views = await this.context.QueryAsync<View>(sql);
-            return views;
+            return await context.QueryAsync<ViewDto>(sql);
         }
         public async Task<View> GetById(int id)
         { 

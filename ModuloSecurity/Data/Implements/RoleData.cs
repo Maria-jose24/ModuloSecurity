@@ -76,11 +76,10 @@ namespace Data.Implements
         {
             return await this.context.Roles.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
         }
-        public async Task<IEnumerable<RoleDto>> GetAll()
+        public async Task<IEnumerable<Role>> GetAll()
         {
             var sql = @"SELECT * FROM Roles ORDER BY Id ASC";
-            return await this.context.QueryAsync<RoleDto>(sql);
+            return await this.context.QueryAsync<Role>(sql);
         }
-
     }
 }

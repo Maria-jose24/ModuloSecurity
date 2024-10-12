@@ -24,14 +24,16 @@ namespace Business.Implements
         {
             IEnumerable<RoleView> roleViews = await this.data.GetAll();
             var roleViewDtos = roleViews.Select(roleView => new RoleViewDto
-            {
+{
                 Id = roleView.Id,
                 State = roleView.State,
                 RoleId = roleView.RoleId,
                 ViewId = roleView.ViewId,
             });
+
             return roleViewDtos;
         }
+
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
             return await this.data.GetAllSelect();

@@ -8,7 +8,7 @@ namespace Data.Interfaces
         public Task Delete(int id);
         public Task LogicalDelete(int id); 
         Task<RoleView> GetById(int id);
-        Task<IEnumerable<RoleViewDto>> GetAll();
+        Task<IEnumerable<RoleView>> GetAll();
         Task<RoleView> Save(RoleView RoleView);
         Task Update(RoleView RoleView);
         Task<IEnumerable<DataSelectDto>> GetAllSelect();

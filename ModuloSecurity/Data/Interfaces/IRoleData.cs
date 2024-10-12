@@ -10,7 +10,7 @@ namespace Data.Interfaces
         public Task<Role> GetById(int id);
         public Task<Role> Save(Role Role);
         public Task Update(Role Role);
-        public Task<IEnumerable<RoleDto>> GetAll();
+        public Task<IEnumerable<Role>> GetAll();
         public Task<IEnumerable<DataSelectDto>> GetAllSelect();
     }
 }

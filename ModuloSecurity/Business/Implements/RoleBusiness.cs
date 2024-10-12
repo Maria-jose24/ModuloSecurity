@@ -8,7 +8,6 @@ namespace Business.Implements
     public class RoleBusiness : IRoleBusiness
     {
         protected readonly IRoleData data;
-
         public RoleBusiness(IRoleData data)
         {
             this.data = data;
@@ -22,16 +21,15 @@ namespace Business.Implements
             await this.data.LogicalDelete(id);
         }
         public async Task<IEnumerable<RoleDto>> GetAll()
+        {
+            IEnumerable<Role> roles = await this.data.GetAll();
+            var roleDtos = roles.Select(role => new RoleDto
             {
-              IEnumerable<Role> roles = await this.data.GetAll();
-              var roleDtos = roles.Select(role => new RoleDto
-                {
-                 Id = role.Id,
-                 Name = role.Name,
-                 Description = role.Description,
-                 State = role.State,
-
-                 });
+                Id = role.Id,
+                Name = role.Name,
+                Description = role.Description,
+                State = role.State
+            });
             return roleDtos;
         }
         public async Task<IEnumerable<DataSelectDto>>GetAllSelect()
@@ -57,7 +55,7 @@ namespace Business.Implements
             role.State = entity.State;
             return role;
         }
-        public async Task<Role>Save(RoleDto entity)
+        public async Task<Role> Save(RoleDto entity)
         {
             Role role = new Role
             {
@@ -65,7 +63,6 @@ namespace Business.Implements
             };
             role = this.mapearDatos(role, entity);
             return await this.data.Save(role);
-
         }
         public async Task Update(RoleDto entity)
         {
