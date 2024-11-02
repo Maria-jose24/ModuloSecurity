@@ -20,10 +20,7 @@ namespace Data.Implements
         public async Task Delete(int Id)
         {
             var entity = await GetById(Id);
-            if (entity == null)
-            {
-                throw new Exception("Registro NO encontrado");
-            }
+            if (entity == null) throw new Exception("Registro NO encontrado");
             // Corregido: Asignación correcta de la propiedad DeleteAt
             entity.DeleteAt = DateTime.Today;
             context.Citys.Remove(entity);
@@ -48,17 +45,24 @@ namespace Data.Implements
         {
             var sql = @"SELECT
                 Id,
-                CONCAT(Name, '-', Postalcode) AS TextoMostrar
+                CONCAT(Name, '-', Postalcode,) AS TextoMostrar
                 FROM
                 citys
-                WHERE DeletedAt IS NULL
+                WHERE DeletedAt IS NULL AND State = 1
                 ORDER BY Id ASC";
             return await context.QueryAsync<DataSelectDto>(sql);
+        }
+        public async Task<IEnumerable<CityDto>> GetAll()
+        {
+            var sql = @"SELECT c.*, s.Name As StateName FROM citys c
+            INNER JOIN states s ON c.StateId = s.Id Order BY Id ASC";
+            return await context.QueryAsync<CityDto>(sql);
+            
         }
 
         public async Task<City> GetById(int id)
         {
-            var sql = @"SELECT * FROM citys WHERE Id = @Id AND DeleteAt ORDER BY Id ASC";
+            var sql = @"SELECT * FROM citys WHERE Id = @Id ORDER BY Id ASC";
             return await this.context.QueryFirstOrDefaultAsync<City>(sql, new { Id = id });
         }
         public async Task<City> Save(City entity)
@@ -69,20 +73,8 @@ namespace Data.Implements
         }
         public async Task Update(City entity)
         {
-            entity.UpdateAt = DateTime.Now;
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await context.SaveChangesAsync();
-        }
-        public async Task<City> GetByName(string name)
-        {
-            return await this.context.Citys.AsNoTracking().Where(item => item.Name == name).FirstOrDefaultAsync();
-        }
-        public async Task<IEnumerable<CityDto>> GetAll()
-        {
-            var sql = @"SELECT c.*, s.Name As StateName FROM citys c
-            INNER JOIN states s ON c.StateId = s.Id Order BY Id ASC";
-            var citys = await this.context.QueryAsync<CityDto>(sql);
-            return citys;
         }
     }
 }
