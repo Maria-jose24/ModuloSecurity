@@ -6,6 +6,6 @@
         public string Name { get; set; }
         public int Postalcode { get; set; }
         public int StateId { get; set; }
-        public string ? StateName { get; set; }
+        public string ? State { get; set; }
     }
 }

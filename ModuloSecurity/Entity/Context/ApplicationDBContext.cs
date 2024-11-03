@@ -67,11 +67,7 @@ namespace Entity.Context
         {
             ChangeTracker.DetectChanges();
         }
-
-        public Task<T> QueryFirstOrDefaulAsync<T>(string sql, object value)
-        {
-            throw new NotImplementedException();
-        }
+        public DbSet<Model.Security.Modulo> Modulos => Set<Model.Security.Modulo>();
 
         public DbSet<Person> Persons => Set<Person>();
 
@@ -84,8 +80,6 @@ namespace Entity.Context
         public DbSet<RoleView> RoleViews => Set<RoleView>();
 
         public DbSet<View> Views => Set<View>();
-
-        public DbSet<Modulo> Modulos => Set<Modulo>();
 
         public DbSet<City> Citys => Set<City>();
 
