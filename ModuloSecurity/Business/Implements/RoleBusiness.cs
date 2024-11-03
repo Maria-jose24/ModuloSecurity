@@ -39,7 +39,7 @@ namespace Business.Implements
         public async Task<RoleDto>GetById(int id)
         {
             Role role = await this.data.GetById(id);
-            RoleDto roleDto=new RoleDto();
+            RoleDto roleDto = new RoleDto();
 
             roleDto.Id = id;
             roleDto.Name = role.Name;

@@ -12,6 +12,5 @@ namespace Business.Interface
         public Task Update(CityDto entity);
         public Task<IEnumerable<CityDto>> GetAll();
         public Task<IEnumerable<DataSelectDto>> GetAllSelect();
-
     }
 }

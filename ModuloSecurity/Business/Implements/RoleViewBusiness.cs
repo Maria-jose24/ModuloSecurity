@@ -68,11 +68,11 @@ namespace Business.Implements
         public async Task Update(RoleViewDto entity)
         {
             RoleView roleView = await this.data.GetById(entity.Id);
+            roleView.UpdateAt = DateTime.Now.AddHours(-5);
             if (roleView == null)
             {
                 throw new Exception("Registro no encontrado");
             }
-            roleView.UpdateAt = DateTime.Now.AddHours(-5);
             roleView = this.mapearDatos(roleView, entity);
             await this.data.Update(roleView);
         }

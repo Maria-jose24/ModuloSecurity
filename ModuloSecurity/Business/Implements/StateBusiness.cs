@@ -24,15 +24,15 @@ namespace Business.Implements
         
         public async Task<IEnumerable<StateDto>> GetAll()
         {
-            IEnumerable<State> states = (IEnumerable<State>)await this.data.GetAll();
-            var stateDtos = states.Select(state => new StateDto
+            IEnumerable<StateDto> states = await this.data.GetAll();
+            /*var stateDtos = states.Select(state => new StateDto
             {
                 Id = state.Id,
                 Name = state.Name,
                 CountriesId = state.CountriesId,
                 CountriesName = state.Countries?.Name,
-            });
-            return stateDtos;
+            });*/
+            return states;
         }
         public async Task<IEnumerable<DataSelectDto>> GetAllSelect()
         {
